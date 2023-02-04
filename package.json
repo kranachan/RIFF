@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "lucide-vue": "^0.109.0",
     "pinia": "^2.0.30",
     "popmotion": "^11.0.5",
     "vue": "^3.2.45",
