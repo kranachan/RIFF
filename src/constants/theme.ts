@@ -5,6 +5,8 @@ export interface ColorTokens {
   surface: string
   placeholder: string
   hint: string
+  'white-forever': string
+  'black-forever': string
 }
 
 export enum ColorScheme {

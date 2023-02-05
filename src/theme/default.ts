@@ -8,6 +8,8 @@ export const defaultTheme: Theme = {
     surface: '#F3F5F8',
     placeholder: '#666666',
     hint: '#DDDDDD',
+    'white-forever': '#FFFFFF',
+    'black-forever': '#000000',
   },
   dark: {
     primary: '#9B1DFF',
@@ -16,5 +18,7 @@ export const defaultTheme: Theme = {
     surface: '#222222',
     placeholder: '#666666',
     hint: '#DDDDDD',
+    'white-forever': '#FFFFFF',
+    'black-forever': '#000000',
   },
 }
