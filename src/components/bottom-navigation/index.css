@@ -1,0 +1,47 @@
+.navigation {
+  @apply flex w-full px-3;
+  @apply items-center justify-around;
+  @apply bg-background;
+
+  &-item {
+    @apply flex flex-col;
+    @apply items-center justify-center overflow-hidden;
+
+    .icon {
+      @apply flex w-[3.75rem] py-[1px];
+      @apply relative items-center justify-center;
+      @apply rounded-standard overflow-hidden;
+      @apply text-base text-foreground font-normal;
+
+      &::after {
+        @apply w-full h-full;
+        @apply absolute top-0;
+
+        left: -100%;
+        content: '';
+        background-color: transparent;
+        transition: all 0.35s ease;
+      }
+    }
+
+    .text {
+      @apply h-0 mt-0;
+      @apply opacity-0 text-xs text-foreground;
+
+      transition: all 0.35s ease;
+    }
+
+    &.active .icon {
+      @apply text-primary;
+
+      &::after {
+        @apply left-0 bg-primary/20;
+      }
+    }
+
+    &.active .text {
+      @apply h-4 mt-1;
+      @apply opacity-100 text-primary;
+    }
+  }
+}
