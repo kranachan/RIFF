@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "gsap": "^3.11.4",
-    "lucide-vue": "^0.109.0",
+    "lucide-vue-next": "^0.109.0",
     "pinia": "^2.0.30",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
