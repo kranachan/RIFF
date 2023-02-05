@@ -673,10 +673,10 @@ lilconfig@^2.0.5, lilconfig@^2.0.6:
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.6.tgz#32a384558bd58af3d4c6e077dd1ad1d397bc69d4"
   integrity sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==
 
-lucide-vue@^0.109.0:
+lucide-vue-next@^0.109.0:
   version "0.109.0"
-  resolved "https://registry.yarnpkg.com/lucide-vue/-/lucide-vue-0.109.0.tgz#fb53c1f9d5bd868ac0423dc3287a859685a1d496"
-  integrity sha512-8QnabynxbLDQxIPsUyC/XL95cURycCIY5i8+Hy7ioKSbt9oaR2aQcTiPwugPOyj4K4FLRq9WP15TgyrCUqxE1g==
+  resolved "https://registry.yarnpkg.com/lucide-vue-next/-/lucide-vue-next-0.109.0.tgz#a5cb0fcdcae619de9cb4ce4cbb05fdd11f9eba96"
+  integrity sha512-va15ctoxPiKiQSuskAQ1kXtFB9J7+eOfGTN1YZTCSgKQVxd1+nRi+f04Sg/3OhV+XW+tMC69nVXkn/7PzS2hQQ==
 
 magic-string@^0.25.7:
   version "0.25.9"
