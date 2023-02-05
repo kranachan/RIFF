@@ -1,7 +1,7 @@
 .root {
   @apply h-[3.75rem] m-4;
   @apply fixed bottom-4 rounded-standard;
-  @apply bg-background border border-foreground;
+  @apply bg-background border border-black-forever;
 
   width: calc(100vw - 2rem);
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 25%);
