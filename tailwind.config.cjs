@@ -9,7 +9,9 @@ module.exports = {
       background: 'rgb(var(--colors-background))',
       surface: 'rgb(var(--colors-surface))',
       placeholder: 'rgb(var(--colors-placeholder))',
-      hint: 'rgb(var(--colors-hint))'
+      hint: 'rgb(var(--colors-hint))',
+      'white-forever': 'rgb(var(--colors-white-forever))',
+      'black-forever': 'rgb(var(--colors-black-forever))',
     },
   },
   plugins: [],
