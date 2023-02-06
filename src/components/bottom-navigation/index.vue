@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Icon from '../icon/index.vue'
+import FloatingLand from '@/components/floating-land/index.vue'
 
 interface NavItem {
   key: string
@@ -27,20 +28,22 @@ const handleClickItem = (item: NavItem) => {
 </script>
 
 <template>
-  <div class="navigation">
-    <template v-for="item in list" :key="item.key">
-      <div
-        class="navigation-item"
-        :class="activeKey === item.key && 'active'"
-        @click="handleClickItem(item)"
-      >
-        <div class="icon">
-          <Icon :name="item.icon" />
+  <FloatingLand>
+    <div class="navigation">
+      <template v-for="item in list" :key="item.key">
+        <div
+          class="navigation-item"
+          :class="activeKey === item.key && 'active'"
+          @click="handleClickItem(item)"
+        >
+          <div class="icon">
+            <Icon :name="item.icon" />
+          </div>
+          <div class="text">{{ item.title }}</div>
         </div>
-        <div class="text">{{ item.title }}</div>
-      </div>
-    </template>
-  </div>
+      </template>
+    </div>
+  </FloatingLand>
 </template>
 
 <style scoped>
