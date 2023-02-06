@@ -4,6 +4,7 @@ export interface ColorTokens {
   background: string
   surface: string
   placeholder: string
+  emphasize: string
   hint: string
   'white-forever': string
   'black-forever': string
