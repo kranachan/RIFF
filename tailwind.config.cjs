@@ -9,6 +9,7 @@ module.exports = {
       background: 'rgb(var(--colors-background))',
       surface: 'rgb(var(--colors-surface))',
       placeholder: 'rgb(var(--colors-placeholder))',
+      emphasize: 'rgb(var(--colors-emphasize))',
       hint: 'rgb(var(--colors-hint))',
       'white-forever': 'rgb(var(--colors-white-forever))',
       'black-forever': 'rgb(var(--colors-black-forever))',
