@@ -1,0 +1,7 @@
+.root {
+  @apply grid;
+}
+
+.col {
+  @apply grid h-min;
+}
