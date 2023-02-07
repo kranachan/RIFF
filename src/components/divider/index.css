@@ -1,0 +1,4 @@
+.divider {
+  @apply w-full;
+  @apply border-hint border-b border-solid;
+}

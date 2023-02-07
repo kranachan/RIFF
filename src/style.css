@@ -6,6 +6,12 @@
   .rounded-standard {
     @apply rounded-[1.25rem];
   }
+  .rounded-tl-standard {
+    @apply rounded-tl-[1.25rem];
+  }
+  .rounded-tr-standard {
+    @apply rounded-tr-[1.25rem];
+  }
 }
 
 :root {
