@@ -1,0 +1,70 @@
+.drawer {
+  @apply flex w-full overflow-hidden;
+  @apply fixed bottom-0 left-0 z-50;
+  @apply flex-col items-center justify-center;
+  @apply rounded-tl-standard rounded-tr-standard;
+  @apply box-border;
+  @apply bg-background;
+
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+
+  &-header {
+    @apply w-full py-[0.625rem];
+  }
+
+  &-touch {
+    @apply flex;
+    @apply items-center justify-center;
+
+    &::before {
+      @apply w-14 h-[0.375rem];
+      @apply left-0 rounded-standard;
+      @apply bg-hint;
+
+      content: '';
+    }
+  }
+
+  &-title {
+    @apply px-4 mt-[0.625rem];
+    @apply text-base font-semibold text-foreground;
+    @apply text-left select-none;
+  }
+
+  &-close {
+    @apply flex w-[1.5rem] h-[1.5rem];
+    @apply absolute top-[1.625rem] right-4;
+    @apply items-center justify-center;
+    @apply text-foreground;
+    @apply select-none cursor-pointer;
+  }
+
+  &-container {
+    @apply w-full h-full;
+    @apply overflow-y-auto overflow-x-hidden;
+  }
+}
+
+.overlay {
+  @apply fixed;
+  @apply top-0 left-0 right-0 bottom-0 z-40;
+  @apply bg-black-forever/60;
+}
+
+.popup-enter-active,
+.popup-leave-active {
+  transition: transform 0.35s ease;
+}
+.popup-enter-from,
+.popup-leave-to {
+  transform: translateY(200%);
+}
+
+.mask-enter-active,
+.mask-leave-active {
+  transition: opacity 0.35s ease;
+}
+.mask-enter-from,
+.mask-leave-to {
+  opacity: 0;
+}
