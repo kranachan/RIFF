@@ -16,26 +16,24 @@
   &-item {
     @apply relative inline-flex overflow-hidden;
     @apply px-2.5 py-1.5 mr-2 rounded-3xl;
-    @apply font-normal text-sm decoration-black leading-5;
-    @apply cursor-pointer select-none;
-
-    background-color: #f3f5f8;
+    @apply font-normal text-sm text-foreground leading-5;
+    @apply bg-surface cursor-pointer select-none;
 
     &-label {
       @apply relative z-10;
     }
 
     &.active &-label {
-      color: #ffffff;
+      @apply text-white-forever;
+
       transition: all 0.35s ease;
     }
 
     &-bg {
       @apply absolute top-0 left-0 h-full w-full z-0;
-      @apply rounded-full;
+      @apply rounded-full bg-primary;
 
       left: -100%;
-      background-color: #9747ff;
       transition: all 0.35s ease;
     }
 
