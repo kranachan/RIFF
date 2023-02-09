@@ -1,0 +1,11 @@
+.button {
+  @apply flex h-[2.125rem] px-4;
+  @apply items-center justify-center;
+  @apply rounded-full overflow-hidden;
+  @apply bg-primary;
+  @apply select-none cursor-pointer;
+
+  &-text {
+    @apply text-sm text-white-forever font-semibold;
+  }
+}
