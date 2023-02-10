@@ -17,9 +17,14 @@
 
     transition: all 0.25s ease;
 
+    &-wrapper {
+      @apply flex;
+      @apply items-center;
+    }
+
     &-avatar {
       @apply w-8 h-8;
-      @apply rounded-t-full overflow-hidden;
+      @apply rounded-full overflow-hidden;
     }
 
     &-right {
@@ -42,6 +47,10 @@
 
     .info {
       @apply opacity-0;
+
+      &-wrapper {
+        @apply hidden;
+      }
     }
 
     .button {
