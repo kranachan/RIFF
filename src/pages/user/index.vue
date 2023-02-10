@@ -38,10 +38,12 @@ const list = [
     <div class="header" :class="anchorVisible && 'transparent'">
       <button class="button"><Icon name="ChevronLeft" /></button>
       <div class="info">
-        <div class="info-avatar"></div>
-        <div class="info-right">
-          <div class="info-nickname">[name]</div>
-          <div class="info-datetime">[information]</div>
+        <div class="info-wrapper">
+          <div class="info-avatar"></div>
+          <div class="info-right">
+            <div class="info-nickname">[name]</div>
+            <div class="info-datetime">[information]</div>
+          </div>
         </div>
       </div>
       <button class="button"><Icon name="MoreVertical" /></button>
