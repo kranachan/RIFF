@@ -5,6 +5,7 @@ import Icon from '@/components/icon/index.vue'
 import Button from '@/components/button/index.vue'
 import Tabbar from '@/components/tabbar/index.vue'
 import StickyTips from '@/components/sticky-tips/index.vue'
+import { ref } from 'vue'
 
 const list = [
   {
@@ -16,6 +17,14 @@ const list = [
     label: 'Album',
   },
 ]
+
+const textareaRef = ref<HTMLTextAreaElement>()
+const textareaWrapperHeight = ref<string>('auto')
+const plain = ref<string>()
+
+const onTextareaWrapperInput = (e: Event) => {
+  plain.value = (e.target as HTMLDivElement).textContent ?? String()
+}
 </script>
 
 <template>
@@ -23,7 +32,20 @@ const list = [
     <div class="creator">
       <div class="creator-header">
         <div class="avatar"></div>
-        <textarea class="textarea" placeholder="What’s happening? …" />
+        <div
+          class="textarea"
+          contenteditable
+          @input="(e) => onTextareaWrapperInput(e)"
+          :style="{ height: textareaWrapperHeight }"
+        >
+          <textarea
+            v-show="false"
+            ref="textareaRef"
+            class="textarea-form"
+            placeholder="What’s happening? …"
+            v-model="plain"
+          />
+        </div>
       </div>
       <Divider />
       <div class="creator-body">
