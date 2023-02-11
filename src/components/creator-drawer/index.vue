@@ -39,7 +39,6 @@ const onTextareaWrapperInput = (e: Event) => {
           :style="{ height: textareaWrapperHeight }"
         >
           <textarea
-            v-show="false"
             ref="textareaRef"
             class="textarea-form"
             placeholder="What’s happening? …"

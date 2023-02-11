@@ -10,13 +10,14 @@
     }
 
     .textarea {
-      @apply w-full h-auto;
+      @apply w-full h-auto min-h-[70px];
 
       &-form {
-        @apply flex-1 ml-4 h-auto min-h-[70px] max-h-full py-[0.375rem];
+        @apply h-auto min-h-[70px] max-h-full;
+        @apply flex-1 ml-4 py-[0.375rem];
         @apply resize-none box-border;
         @apply text-placeholder text-sm;
-        @apply outline-none;
+        @apply outline-none hidden;
       }
     }
   }
