@@ -1,0 +1,49 @@
+.creator {
+  &-header {
+    @apply flex p-4;
+    @apply items-start;
+
+    .avatar {
+      @apply flex w-8 h-8;
+      @apply items-center justify-center;
+      @apply rounded-full overflow-hidden bg-foreground;
+    }
+
+    .textarea {
+      @apply flex-1 ml-4 h-[4.375rem] py-[0.375rem];
+      @apply resize-none box-border;
+      @apply text-placeholder text-sm;
+      @apply outline-none;
+    }
+  }
+
+  &-body {
+    @apply py-7 px-4;
+
+    .upload {
+      @apply flex w-[6.25rem] h-[6.25rem];
+      @apply items-center justify-center overflow-hidden;
+      @apply border-2 border-hint border-solid;
+      @apply box-border rounded-standard;
+      @apply bg-surface;
+
+      .icon {
+        @apply flex w-6 h-6;
+        @apply items-center justify-center;
+        @apply text-primary;
+      }
+    }
+  }
+
+  &-footer {
+    @apply flex w-full py-[1.125rem] pr-[1rem];
+    @apply absolute bottom-0 left-0 z-10;
+    @apply items-center;
+    @apply bg-background;
+
+    .tabbar-wrapper {
+      @apply flex flex-1;
+      @apply items-center;
+    }
+  }
+}
