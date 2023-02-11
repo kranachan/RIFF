@@ -1,8 +1,27 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, withDefaults } from 'vue'
+
+type ButtonType = 'primary' | 'outline' | 'disabled'
+
+const props = withDefaults(
+  defineProps<{
+    btnType: ButtonType
+  }>(),
+  {
+    btnType: 'primary',
+  },
+)
+
+const type = ref<ButtonType>('primary')
+</script>
 
 <template>
-  <button class="button">
-    <span class="button-text"><slot /></span>
+  <button
+    class="button"
+    :class="props.btnType"
+    :disabled="props.btnType === 'disabled'"
+  >
+    <slot />
   </button>
 </template>
 
