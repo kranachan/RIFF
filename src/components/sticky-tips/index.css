@@ -1,0 +1,29 @@
+.sticky-wrapper {
+  @apply inline-flex relative;
+}
+
+.sticky-tips {
+  @apply flex h-[1.125rem] px-[0.325rem] top-0 left-1/2;
+  @apply absolute items-center;
+  @apply rounded-full bg-primary;
+  @apply text-white-forever font-semibold;
+
+  transform: translate(-50%, -50%);
+
+  .icon {
+    @apply flex w-3 h-3;
+    @apply items-center justify-center;
+    @apply z-10;
+  }
+
+  .text {
+    @apply ml-[0.2rem] z-10;
+    @apply text-[0.525rem] leading-[0.75rem];
+    @apply whitespace-nowrap;
+  }
+
+  .arrow {
+    @apply w-3 h-3;
+    @apply absolute top-[0.825rem] left-[1.625rem];
+  }
+}
