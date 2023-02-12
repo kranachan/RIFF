@@ -3,6 +3,10 @@ import { reactive, ref, Transition, withDefaults } from 'vue'
 import Icon from '@/components/icon/index.vue'
 import Divider from '@/components/divider/index.vue'
 
+/**
+ * Todo: fix drawer offset when focus on a input for firefox
+ */
+
 type ChangeType = 'full' | 'half' | 'hide'
 
 const props = withDefaults(
