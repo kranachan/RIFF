@@ -2,10 +2,24 @@
   @apply flex h-[2.125rem] px-4;
   @apply items-center justify-center;
   @apply rounded-full overflow-hidden;
-  @apply bg-primary;
-  @apply select-none cursor-pointer;
+  @apply border border-solid;
+  @apply select-none cursor-pointer outline-none;
+  @apply text-sm font-semibold;
 
-  &-text {
-    @apply text-sm text-white-forever font-semibold;
+  &.primary {
+    @apply bg-primary border-primary;
+    @apply text-white-forever;
+  }
+
+  &.outline {
+    @apply border-primary;
+    @apply text-primary;
+
+    background-color: transparent;
+  }
+
+  &.disabled {
+    @apply bg-hint border-hint;
+    @apply text-white-forever;
   }
 }
