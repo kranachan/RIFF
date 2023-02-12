@@ -2,7 +2,7 @@
   @apply pb-[4.375rem];
 
   &-header {
-    @apply flex p-4;
+    @apply flex p-4 min-h-[6.25rem];
     @apply items-start;
 
     .avatar {
@@ -12,9 +12,9 @@
     }
 
     .textarea-wrapper {
-      @apply flex-1 min-h-[4.375rem] ml-4 my-[0.375rem];
+      @apply flex-1 min-h-[4.25rem] ml-4 py-[0.375rem];
       @apply text-sm text-foreground;
-      @apply outline-none overflow-hidden;
+      @apply outline-none overflow-hidden box-border;
 
       .textarea {
         @apply flex-1;
