@@ -1,6 +1,7 @@
 .root {
   @apply flex h-[3.75rem] m-4;
-  @apply fixed bottom-4 rounded-standard overflow-hidden;
+  @apply fixed bottom-4 z-30;
+  @apply rounded-standard overflow-hidden;
   @apply bg-background border border-black-forever;
 
   width: calc(100vw - 2rem);
