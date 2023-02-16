@@ -4,6 +4,7 @@ import Explore from '@/pages/main/explore/index.vue'
 import Following from '@/pages/main/following/index.vue'
 import Settings from '@/pages/main/settings/index.vue'
 import User from '@/pages/user/index.vue'
+import Relationship from '@/pages/relationship/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,6 +32,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/user/:userId',
     component: User,
+  },
+  {
+    path: '/user/:userId/relationship',
+    component: Relationship,
   },
 ]
 
