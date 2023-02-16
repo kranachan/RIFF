@@ -1,0 +1,28 @@
+.list {
+  @apply relative;
+
+  &-slider {
+    @apply flex w-full;
+    @apply overflow-x-auto overflow-y-hidden;
+
+    &::-webkit-scrollbar {
+      @apply hidden;
+    }
+  }
+
+  &-wrapper {
+    @apply inline-flex px-4;
+    @apply items-center;
+  }
+
+  .mask {
+    @apply w-20 h-full;
+    @apply absolute right-0 top-0 z-10;
+
+    background: linear-gradient(
+      270deg,
+      rgb(var(--colors-background)) 0%,
+      rgba(var(--colors-background) / 0) 93.13%
+    );
+  }
+}
