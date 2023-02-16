@@ -1,6 +1,7 @@
 .avatar {
   @apply w-full h-full object-cover transition-all;
   @apply rounded-full border-2 border-foreground;
+  @apply bg-hint;
 
   &:active {
     @apply brightness-75;
