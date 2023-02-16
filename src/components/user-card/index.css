@@ -1,0 +1,30 @@
+.user-card {
+  @apply flex p-4;
+  @apply items-start;
+  @apply border-b border-solid border-surface;
+
+  .info-box {
+    @apply flex-1 ml-2;
+    @apply overflow-hidden;
+
+    .nickname {
+      @apply max-w-[8.25rem];
+      @apply text-sm font-semibold text-foreground;
+      @apply overflow-hidden text-ellipsis whitespace-nowrap;
+    }
+
+    .sign {
+      @apply max-w-[8.25rem];
+      @apply text-xs font-normal text-placeholder;
+      @apply break-all overflow-hidden text-ellipsis;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  .action-wrapper {
+    @apply mt-1;
+  }
+}

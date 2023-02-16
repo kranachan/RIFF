@@ -1,0 +1,42 @@
+.photo-card {
+  @apply relative w-[6.25rem] h-36;
+  @apply rounded-standard overflow-hidden;
+  @apply bg-surface;
+  @apply select-none cursor-pointer;
+
+  &::after {
+    @apply w-full h-full;
+    @apply absolute bottom-0 left-0;
+
+    content: '';
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 63.45%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+
+  .cover {
+    @apply w-full h-full;
+    @apply relative;
+    @apply object-cover;
+
+    &:not([src]),
+    &[src=''] {
+      opacity: 0;
+    }
+  }
+
+  .info {
+    @apply flex w-full p-2;
+    @apply items-center;
+    @apply absolute bottom-0 left-0 z-10;
+    @apply overflow-hidden;
+
+    .nickname {
+      @apply flex-1 ml-1;
+      @apply text-xs text-white-forever;
+      @apply overflow-hidden text-ellipsis whitespace-nowrap;
+    }
+  }
+}
