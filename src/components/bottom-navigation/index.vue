@@ -1,27 +1,53 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { LucideIconKey } from '@/constants/icon'
 import Icon from '../icon/index.vue'
 import FloatingLand from '@/components/floating-land/index.vue'
+import Avatar from '@/components/avatar/index.vue'
+import { useStore } from '@/store'
 
-interface NavItem {
-  key: string
-  icon: string
+interface RouteItem {
+  key: BottomNavigationRoute
+  icon: LucideIconKey
   title: string
   route: string
 }
 
-const router = useRouter()
+enum BottomNavigationRoute {
+  Explore,
+  Following,
+  Profile,
+}
 
-const list = [
-  { key: 'explore', icon: 'Ghost', title: 'Explore', route: '/explore' },
-  { key: 'following', icon: 'Users', title: 'Following', route: '/following' },
-  { key: 'settings', icon: 'Settings', title: 'Settings', route: '/settings' },
+const { app } = useStore()
+const { self, isLoggedIn } = app
+
+const routes: RouteItem[] = [
+  {
+    key: BottomNavigationRoute.Explore,
+    icon: 'Ghost',
+    title: 'Explore',
+    route: '/explore',
+  },
+  {
+    key: BottomNavigationRoute.Following,
+    icon: 'Users',
+    title: 'Following',
+    route: '/following',
+  },
+  {
+    key: BottomNavigationRoute.Profile,
+    icon: 'AtSign',
+    title: isLoggedIn ? self?.username ?? '[Unknown User]' : 'Sign In',
+    route: '/profile',
+  },
 ]
 
-const activeKey = ref('explore')
+const router = useRouter()
+const activeKey = ref(BottomNavigationRoute.Explore)
 
-const handleClickItem = (item: NavItem) => {
+const handleClickItem = (item: RouteItem) => {
   activeKey.value = item.key
   router.replace(item.route)
 }
@@ -30,16 +56,21 @@ const handleClickItem = (item: NavItem) => {
 <template>
   <FloatingLand>
     <div class="navigation">
-      <template v-for="item in list" :key="item.key">
+      <template v-for="route in routes" :key="route.key">
         <div
           class="navigation-item"
-          :class="activeKey === item.key && 'active'"
-          @click="handleClickItem(item)"
+          :class="activeKey === route.key && 'active'"
+          @click="handleClickItem(route)"
         >
           <div class="icon">
-            <Icon :name="item.icon" />
+            <Avatar
+              v-if="route.key === BottomNavigationRoute.Profile && isLoggedIn"
+              :source="self?.avatar"
+              :size="24"
+            />
+            <Icon v-else :name="route.icon" />
           </div>
-          <div class="text">{{ item.title }}</div>
+          <div class="text">{{ route.title }}</div>
         </div>
       </template>
     </div>

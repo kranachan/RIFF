@@ -2,7 +2,7 @@ import { RouteRecordRaw } from 'vue-router'
 import Main from '@/pages/main/index.vue'
 import Explore from '@/pages/main/explore/index.vue'
 import Following from '@/pages/main/following/index.vue'
-import Settings from '@/pages/main/settings/index.vue'
+import Profile from '@/pages/main/profile/index.vue'
 import User from '@/pages/user/index.vue'
 import Relationship from '@/pages/relationship/index.vue'
 
@@ -23,9 +23,9 @@ const routes: Array<RouteRecordRaw> = [
         component: Following,
       },
       {
-        name: 'settings',
-        path: '/settings',
-        component: Settings,
+        name: 'profile',
+        path: '/profile',
+        component: Profile,
       },
     ],
   },
