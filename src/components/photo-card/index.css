@@ -35,7 +35,7 @@
 
     .nickname {
       @apply flex-1 ml-1;
-      @apply text-xs text-white-forever;
+      @apply text-xs text-white;
       @apply overflow-hidden text-ellipsis whitespace-nowrap;
     }
   }

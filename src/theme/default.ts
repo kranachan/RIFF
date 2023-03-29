@@ -9,8 +9,6 @@ export const defaultTheme: Theme = {
     placeholder: '#666666',
     emphasize: '#ee4057',
     hint: '#DDDDDD',
-    'white-forever': '#FFFFFF',
-    'black-forever': '#000000',
   },
   dark: {
     primary: '#9B1DFF',
@@ -20,7 +18,5 @@ export const defaultTheme: Theme = {
     placeholder: '#666666',
     emphasize: '#ee4057',
     hint: '#DDDDDD',
-    'white-forever': '#FFFFFF',
-    'black-forever': '#000000',
   },
 }
