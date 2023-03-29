@@ -24,7 +24,7 @@
     }
 
     &.active &-label {
-      @apply text-white-forever;
+      @apply text-white;
 
       transition: all 0.35s ease;
     }

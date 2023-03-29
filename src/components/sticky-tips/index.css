@@ -6,7 +6,7 @@
   @apply flex h-[1.125rem] px-[0.325rem] top-0 left-1/2;
   @apply absolute items-center;
   @apply rounded-full bg-primary;
-  @apply text-white-forever font-semibold;
+  @apply text-white font-semibold;
 
   transform: translate(-50%, -50%);
 

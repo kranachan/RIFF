@@ -19,14 +19,14 @@
 
         .nickname {
           @apply flex-1 mx-3;
-          @apply text-base text-white-forever font-semibold;
+          @apply text-base text-white font-semibold;
           @apply overflow-hidden text-ellipsis whitespace-nowrap;
 
           text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);
         }
 
         .edit {
-          @apply border-white-forever text-white-forever;
+          @apply border-white text-white;
         }
       }
 

@@ -4,7 +4,7 @@
 
 .action-like {
   @apply absolute right-0 bottom-0 p-2;
-  @apply text-white-forever cursor-pointer;
+  @apply text-white cursor-pointer;
 
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 40%));
 

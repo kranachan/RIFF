@@ -8,7 +8,7 @@
 
   &.primary {
     @apply bg-primary border-primary;
-    @apply text-white-forever;
+    @apply text-white;
   }
 
   &.outline {
@@ -20,6 +20,6 @@
 
   &.disabled {
     @apply bg-hint border-hint;
-    @apply text-white-forever;
+    @apply text-white;
   }
 }
