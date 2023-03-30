@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { withDefaults } from 'vue'
+import { ButtonHTMLAttributes, toRefs, withDefaults } from 'vue'
 
-type Variant = 'primary' | 'outline' | 'disabled'
+type Variant = 'primary' | 'outline'
 
-const props = withDefaults(
-  defineProps<{
-    variant: Variant
-  }>(),
-  {
-    variant: 'primary',
-  },
-)
+interface ButtonProps extends ButtonHTMLAttributes {
+  variant?: Variant
+  disabled?: boolean
+}
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  variant: 'primary',
+})
+
+const { variant, disabled } = toRefs(props)
 </script>
 
 <template>
-  <button
-    class="button"
-    :class="props.variant"
-    :disabled="props.variant === 'disabled'"
-  >
+  <button class="button" :class="[variant, disabled && 'disabled']">
     <slot />
   </button>
 </template>
