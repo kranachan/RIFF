@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Button from '@/components/button/index.vue'
-import TextField from '@/components/text-field/index.vue'
-import Picture from '@/components/picture/index.vue'
+import Button from '@/components/button/Button.vue'
+import TextField from '@/components/text-field/TextField.vue'
+import Picture from '@/components/picture/Picture.vue'
 import Logo from '@/assets/branding/logo.svg?component'
 import AuthBannerPng from '@/assets/images/auth-banner.png?url'
 import AuthBannerWebp from '@/assets/images/auth-banner.webp?url'
@@ -125,5 +125,5 @@ const toggleAuthScheme = () => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Auth.css');
 </style>

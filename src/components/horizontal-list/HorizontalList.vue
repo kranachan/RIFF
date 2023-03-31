@@ -29,5 +29,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./HorizontalList.css');
 </style>

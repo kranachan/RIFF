@@ -18,5 +18,5 @@ const style = { width: sizeWithUnit, height: sizeWithUnit }
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Avatar.css');
 </style>

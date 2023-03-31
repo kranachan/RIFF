@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Icon from '@/components/icon/index.vue'
+import Icon from '@/components/icon/Icon.vue'
 import { gsap } from 'gsap'
 
 defineProps<{
@@ -37,5 +37,5 @@ const onLikeClicked = (e: MouseEvent) => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./ImagePreview.css');
 </style>

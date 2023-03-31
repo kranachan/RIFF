@@ -2,7 +2,7 @@
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 import { Image } from '@/constants/image'
-import ImagePreview from '@/components/image-preview/index.vue'
+import ImagePreview from '@/components/image-preview/ImagePreview.vue'
 
 /**
  * TODO: add visual list support
@@ -70,5 +70,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./MasonryImageStream.css');
 </style>

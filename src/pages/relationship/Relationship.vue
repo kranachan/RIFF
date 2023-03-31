@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import Icon from '@/components/icon/index.vue'
-import Tabbar from '@/components/tabbar/index.vue'
-import Divider from '@/components/divider/index.vue'
-import UserCard from '@/components/user-card/index.vue'
+import Icon from '@/components/icon/Icon.vue'
+import Tabbar from '@/components/tabbar/Tabbar.vue'
+import Divider from '@/components/divider/Divider.vue'
+import UserCard from '@/components/user-card/UserCard.vue'
 
 const list = [
   {
@@ -56,5 +56,5 @@ const onTabbarChange = (key: number) => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Relationship.css');
 </style>

@@ -22,5 +22,5 @@ const { variant, disabled } = toRefs(props)
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Button.css');
 </style>

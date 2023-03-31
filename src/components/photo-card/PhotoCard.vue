@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Avatar from '@/components/avatar/index.vue'
+import Avatar from '@/components/avatar/Avatar.vue'
 </script>
 
 <template>
@@ -13,5 +13,5 @@ import Avatar from '@/components/avatar/index.vue'
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./PhotoCard.css');
 </style>

@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { LucideIconKey } from '@/constants/icon'
-import Icon from '@/components/icon/index.vue'
-import FloatingLand from '@/components/floating-land/index.vue'
-import Avatar from '@/components/avatar/index.vue'
+import Icon from '@/components/icon/Icon.vue'
+import FloatingLand from '@/components/floating-land/FloatingLand.vue'
+import Avatar from '@/components/avatar/Avatar.vue'
 import { useStore } from '@/store'
 
 interface RouteItem {
@@ -78,5 +78,5 @@ const handleClickItem = (item: RouteItem) => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./BottomNavigation.css');
 </style>

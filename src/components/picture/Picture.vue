@@ -16,5 +16,5 @@ defineProps<{
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Picture.css');
 </style>
