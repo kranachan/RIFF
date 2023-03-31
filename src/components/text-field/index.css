@@ -1,0 +1,9 @@
+.text-field {
+  @apply bg-surface text-foreground placeholder-placeholder;
+  @apply text-sm px-4 py-2 rounded-lg outline-none;
+  @apply border-[3px] border-transparent;
+
+  &:focus {
+    @apply border-primary/30;
+  }
+}
