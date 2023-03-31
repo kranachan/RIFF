@@ -1,11 +1,11 @@
 import { RouteRecordRaw } from 'vue-router'
-import Main from '@/pages/main/Main.vue'
-import Explore from '@/pages/main/explore/Explore.vue'
-import Following from '@/pages/main/following/Following.vue'
-import Profile from '@/pages/main/profile/Profile.vue'
-import Auth from '@/pages/main/auth/Auth.vue'
-import User from '@/pages/user/User.vue'
-import Relationship from '@/pages/relationship/Relationship.vue'
+import Main from '@/pages/mobile/main/Main.vue'
+import Explore from '@/pages/mobile/main/explore/Explore.vue'
+import Following from '@/pages/mobile/main/following/Following.vue'
+import Profile from '@/pages/mobile/main/profile/Profile.vue'
+import Auth from '@/pages/mobile/main/auth/Auth.vue'
+import User from '@/pages/mobile/user/User.vue'
+import Relationship from '@/pages/mobile/relationship/Relationship.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
