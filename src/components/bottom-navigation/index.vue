@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { LucideIconKey } from '@/constants/icon'
-import Icon from '../icon/index.vue'
+import Icon from '@/components/icon/index.vue'
 import FloatingLand from '@/components/floating-land/index.vue'
 import Avatar from '@/components/avatar/index.vue'
 import { useStore } from '@/store'
@@ -39,8 +39,8 @@ const routes: RouteItem[] = [
   {
     key: BottomNavigationRoute.Profile,
     icon: 'AtSign',
-    title: isLoggedIn ? self?.username ?? '[Unknown User]' : 'Sign In',
-    route: '/profile',
+    title: isLoggedIn ? self?.username ?? '[Unknown User]' : 'Auth',
+    route: isLoggedIn ? '/profile' : '/auth',
   },
 ]
 

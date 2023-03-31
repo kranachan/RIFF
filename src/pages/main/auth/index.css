@@ -1,0 +1,19 @@
+.header {
+  @apply flex items-center p-5 h-[5.625rem];
+
+  & .toggle-scheme-btn {
+    @apply ml-auto;
+  }
+}
+
+.welcome-text {
+  @apply block text-sm mx-5 mt-14 mb-4;
+}
+
+.frame {
+  @apply px-5 grid gap-4;
+
+  & .action-btn {
+    @apply font-bold mt-2 h-10;
+  }
+}

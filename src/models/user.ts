@@ -1,6 +1,5 @@
 export interface User {
   id: string
-  email: string
   username: string
   name: string
   avatar?: string
@@ -8,4 +7,12 @@ export interface User {
   createdAt: Date
   following: string[]
   follower: string[]
+}
+
+export interface Self extends User {
+  email: string
+}
+
+export interface SelfWithToken extends Self {
+  token: string
 }
