@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from '@/components/button/index.vue'
-import Avatar from '@/components/avatar/index.vue'
+import Button from '@/components/button/Button.vue'
+import Avatar from '@/components/avatar/Avatar.vue'
 </script>
 
 <template>
@@ -17,5 +17,5 @@ import Avatar from '@/components/avatar/index.vue'
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./UserCard.css');
 </style>

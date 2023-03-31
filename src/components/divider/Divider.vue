@@ -5,5 +5,5 @@
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Divider.css');
 </style>

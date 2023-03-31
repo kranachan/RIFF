@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import VueLazyload from 'vue-lazyload'
 import router from './router'
-import './style.css'
+import './App.css'
 import App from './App.vue'
 
 const app = createApp(App)

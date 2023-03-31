@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref, Transition, withDefaults } from 'vue'
-import Icon from '@/components/icon/index.vue'
-import Divider from '@/components/divider/index.vue'
+import Icon from '@/components/icon/Icon.vue'
+import Divider from '@/components/divider/Divider.vue'
 
 /**
  * Todo: fix drawer offset when focus on a input for firefox
@@ -176,5 +176,5 @@ const handleClose = () => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Drawer.css');
 </style>

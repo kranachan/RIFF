@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Button from '@/components/button/index.vue'
-import Divider from '@/components/divider/index.vue'
-import Icon from '@/components/icon/index.vue'
-import PhotoCard from '@/components/photo-card/index.vue'
-import HorizontalList from '@/components/horizontal-list/index.vue'
-import Avatar from '@/components/avatar/index.vue'
+import Button from '@/components/button/Button.vue'
+import Divider from '@/components/divider/Divider.vue'
+import Icon from '@/components/icon/Icon.vue'
+import PhotoCard from '@/components/photo-card/PhotoCard.vue'
+import HorizontalList from '@/components/horizontal-list/HorizontalList.vue'
+import Avatar from '@/components/avatar/Avatar.vue'
 </script>
 
 <template>
@@ -87,5 +87,5 @@ import Avatar from '@/components/avatar/index.vue'
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Profile.css');
 </style>

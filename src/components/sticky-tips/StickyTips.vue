@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { withDefaults } from 'vue'
-import Icon from '@/components/icon/index.vue'
+import Icon from '@/components/icon/Icon.vue'
 import Polygon from '@/assets/icons/polygon.svg?component'
 
 const props = withDefaults(
@@ -26,5 +26,5 @@ const props = withDefaults(
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./StickyTips.css');
 </style>

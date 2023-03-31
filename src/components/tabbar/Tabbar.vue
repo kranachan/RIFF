@@ -75,5 +75,5 @@ const autoPosition = (target: HTMLDivElement) => {
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Tabbar.css');
 </style>

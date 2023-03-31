@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import Drawer from '@/components/drawer/index.vue'
-import Divider from '@/components/divider/index.vue'
-import Icon from '@/components/icon/index.vue'
-import Button from '@/components/button/index.vue'
-import Tabbar from '@/components/tabbar/index.vue'
-import StickyTips from '@/components/sticky-tips/index.vue'
+import Drawer from '@/components/drawer/Drawer.vue'
+import Divider from '@/components/divider/Divider.vue'
+import Icon from '@/components/icon/Icon.vue'
+import Button from '@/components/button/Button.vue'
+import Tabbar from '@/components/tabbar/Tabbar.vue'
+import StickyTips from '@/components/sticky-tips/StickyTips.vue'
 
 const list = [
   {
@@ -71,12 +71,12 @@ const onTextareaBlur = () => {
         <div class="tabbar-wrapper">
           <Tabbar :list="list" :activeKey="1" />
         </div>
-        <Button variant="disabled">Publish</Button>
+        <Button>Publish</Button>
       </div>
     </div>
   </Drawer>
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./CreatorDrawer.css');
 </style>

@@ -19,5 +19,5 @@ const value = computed({
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./TextField.css');
 </style>

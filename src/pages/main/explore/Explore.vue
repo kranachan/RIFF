@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Icon from '@/components/icon/index.vue'
+import Icon from '@/components/icon/Icon.vue'
 import Logo from '@/assets/branding/logo.svg?component'
 </script>
 
@@ -21,5 +21,5 @@ import Logo from '@/assets/branding/logo.svg?component'
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./Explore.css');
 </style>

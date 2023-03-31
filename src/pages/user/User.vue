@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useElementVisibility } from '@vueuse/core'
-import Tabbar from '@/components/tabbar/index.vue'
-import Button from '@/components/button/index.vue'
-import Icon from '@/components/icon/index.vue'
+import Tabbar from '@/components/tabbar/Tabbar.vue'
+import Button from '@/components/button/Button.vue'
+import Icon from '@/components/icon/Icon.vue'
 
 const anchorRef = ref<HTMLDivElement>()
 
@@ -83,5 +83,5 @@ const list = [
 </template>
 
 <style scoped>
-@import url('./index.css');
+@import url('./User.css');
 </style>
