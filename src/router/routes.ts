@@ -3,6 +3,7 @@ import Main from '@/pages/main/index.vue'
 import Explore from '@/pages/main/explore/index.vue'
 import Following from '@/pages/main/following/index.vue'
 import Profile from '@/pages/main/profile/index.vue'
+import Auth from '@/pages/main/auth/index.vue'
 import User from '@/pages/user/index.vue'
 import Relationship from '@/pages/relationship/index.vue'
 
@@ -26,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'profile',
         path: '/profile',
         component: Profile,
+      },
+      {
+        name: 'auth',
+        path: '/auth',
+        component: Auth,
       },
     ],
   },

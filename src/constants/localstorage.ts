@@ -1,1 +1,3 @@
-export type LocalStorageMap = {}
+export type LocalStorageMap = {
+  token: string
+}
