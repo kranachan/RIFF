@@ -17,15 +17,23 @@ class Auth {
     return resp.data
   }
 
+  verify = async (email: string): Promise<void> => {
+    await this.root.entry('/verify').post({
+      email,
+    })
+  }
+
   register = async (
     username: string,
     email: string,
     password: string,
+    code: string,
   ): Promise<SelfWithToken> => {
     const resp = await this.root.entry('/register').post<SelfWithToken>({
       username,
       email,
       password,
+      code,
     })
     return resp.data
   }
