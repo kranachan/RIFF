@@ -12,11 +12,16 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   variant: 'primary',
 })
 
-const { variant, disabled } = toRefs(props)
+const { variant, disabled, ...rest } = toRefs(props)
 </script>
 
 <template>
-  <button class="button" :class="[variant, disabled && 'disabled']">
+  <button
+    class="button"
+    :class="[variant, disabled && 'disabled']"
+    :disabled="disabled"
+    v-bind="rest"
+  >
     <slot />
   </button>
 </template>
