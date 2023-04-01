@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import DeafultAvatar from '@/assets/images/default-avatar.png?url'
+
 const { source, size } = withDefaults(
   defineProps<{
     source?: string
@@ -14,7 +16,7 @@ const style = { width: sizeWithUnit, height: sizeWithUnit }
 </script>
 
 <template>
-  <img class="avatar" v-lazy="source" :style="style" />
+  <img class="avatar" v-lazy="source ?? DeafultAvatar" :style="style" />
 </template>
 
 <style scoped>
