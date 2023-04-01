@@ -7,6 +7,7 @@ import FloatingLand from '@/components/floating-land/FloatingLand.vue'
 import Avatar from '@/components/avatar/Avatar.vue'
 import { useStore } from '@/store'
 import { storeToRefs } from 'pinia'
+import { computed } from '@vue/reactivity'
 
 interface RouteItem {
   key: BottomNavigationRoute
@@ -24,7 +25,7 @@ enum BottomNavigationRoute {
 const { app } = useStore()
 const { self, isLoggedIn } = storeToRefs(app)
 
-const routes: RouteItem[] = [
+const routes = computed<RouteItem[]>(() => [
   {
     key: BottomNavigationRoute.Explore,
     icon: 'Ghost',
@@ -43,7 +44,7 @@ const routes: RouteItem[] = [
     title: isLoggedIn.value ? self.value?.username ?? '[Unknown User]' : 'Auth',
     route: isLoggedIn.value ? '/profile' : '/auth',
   },
-]
+])
 
 const router = useRouter()
 const activeKey = ref(BottomNavigationRoute.Explore)

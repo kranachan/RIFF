@@ -11,6 +11,7 @@ import { setLocalStorage } from '@/utils/localstorage'
 import { useStore } from '@/store'
 import { useRouter } from 'vue-router'
 import { SelfWithToken } from '@/models/user'
+import { storeToRefs } from 'pinia'
 
 enum AuthScheme {
   SignIn,
@@ -38,10 +39,11 @@ const signUpSet = reactive<SingUpSet>({
 })
 
 const { app } = useStore()
+const { isLoggedIn } = storeToRefs(app)
 const router = useRouter()
 
 onMounted(() => {
-  if (app.isLoggedIn) {
+  if (isLoggedIn.value) {
     router.push('/profile')
   }
 })
