@@ -50,7 +50,7 @@ const list = [
     </div>
 
     <div class="user-cover">
-      <img v-lazy="" alt="banner" />
+      <img alt="banner" />
     </div>
 
     <div class="user-profile">
