@@ -12,6 +12,7 @@ import { useStore } from '@/store'
 import { useRouter } from 'vue-router'
 import { SelfWithToken } from '@/models/user'
 import { storeToRefs } from 'pinia'
+import { useIntervalFn } from '@vueuse/shared'
 
 enum AuthScheme {
   SignIn,
@@ -26,6 +27,7 @@ interface SignInSet {
 }
 interface SingUpSet extends SignInSet {
   email?: string
+  code?: string
 }
 
 const signInSet = reactive<SignInSet>({
@@ -36,6 +38,7 @@ const signUpSet = reactive<SingUpSet>({
   username: undefined,
   email: undefined,
   password: undefined,
+  code: undefined,
 })
 
 const { app } = useStore()
@@ -53,9 +56,10 @@ const isSignUp = computed(() => authScheme.value === AuthScheme.SignUp)
 const isValidSignInSet = computed(() =>
   Boolean(signInSet.username && signInSet.password),
 )
-const isValidSignUpSet = computed(() =>
-  Boolean(signUpSet.username && signUpSet.email && signUpSet.password),
-)
+const isValidSignUpSet = computed(() => {
+  const { username, email, password, code } = signUpSet
+  return Boolean(username && email && password && code)
+})
 
 const next = (result: SelfWithToken) => {
   const { token, ...self } = result
@@ -80,8 +84,37 @@ const signUp = async () => {
     signUpSet.username!,
     signUpSet.email!,
     signUpSet.password!,
+    signUpSet.code!,
   )
   next(res)
+}
+
+const sendableCountdown = ref<number>(60)
+const { pause, resume, isActive } = useIntervalFn(
+  () => {
+    if (sendableCountdown.value === 0) {
+      pause()
+      sendableCountdown.value = 60
+      return
+    }
+    sendableCountdown.value--
+  },
+  1000,
+  {
+    immediate: false,
+  },
+)
+
+const sendVerificationCode = async () => {
+  if (!signUpSet.email || isActive.value) {
+    return
+  }
+  try {
+    await AuthApi.verify(signUpSet.email)
+    resume()
+  } catch (e) {
+    console.warn(e)
+  }
 }
 
 const toggleAuthScheme = () => {
@@ -116,12 +149,25 @@ const toggleAuthScheme = () => {
 
   <form v-if="isSignUp" class="frame" @submit.prevent="signUp">
     <TextField placeholder="Username" v-model="signUpSet.username" />
-    <TextField placeholder="Email" v-model="signUpSet.email" />
     <TextField
       type="password"
       placeholder="Password"
       v-model="signUpSet.password"
     />
+    <TextField placeholder="Email" v-model="signUpSet.email" />
+    <div class="verification">
+      <TextField
+        class="verification-field"
+        placeholder="Verification Code"
+        v-model="signUpSet.code"
+      />
+      <Button
+        class="verification-btn"
+        @click="sendVerificationCode"
+        :disabled="!signUpSet.email || isActive"
+        >Send {{ isActive ? `(${sendableCountdown})` : null }}</Button
+      >
+    </div>
     <Button class="action-btn" :disabled="!isValidSignUpSet">Sign Up</Button>
   </form>
 </template>

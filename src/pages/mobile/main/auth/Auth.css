@@ -13,6 +13,18 @@
 .frame {
   @apply px-5 grid gap-4;
 
+  & .verification {
+    @apply flex gap-4 items-center;
+
+    &-field {
+      @apply w-full;
+    }
+
+    &-btn {
+      @apply flex-shrink-0;
+    }
+  }
+
   & .action-btn {
     @apply font-bold mt-2 h-10;
   }
