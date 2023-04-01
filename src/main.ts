@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import VueLazyload from 'vue-lazyload'
-import router from '@/pages/mobile/router'
+import router from '@/router'
 import '@/App.css'
 import App from '@/App.vue'
 
