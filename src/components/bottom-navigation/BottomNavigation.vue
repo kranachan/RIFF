@@ -6,6 +6,7 @@ import Icon from '@/components/icon/Icon.vue'
 import FloatingLand from '@/components/floating-land/FloatingLand.vue'
 import Avatar from '@/components/avatar/Avatar.vue'
 import { useStore } from '@/store'
+import { storeToRefs } from 'pinia'
 
 interface RouteItem {
   key: BottomNavigationRoute
@@ -21,7 +22,7 @@ enum BottomNavigationRoute {
 }
 
 const { app } = useStore()
-const { self, isLoggedIn } = app
+const { self, isLoggedIn } = storeToRefs(app)
 
 const routes: RouteItem[] = [
   {
@@ -39,8 +40,8 @@ const routes: RouteItem[] = [
   {
     key: BottomNavigationRoute.Profile,
     icon: 'AtSign',
-    title: isLoggedIn ? self?.username ?? '[Unknown User]' : 'Auth',
-    route: isLoggedIn ? '/profile' : '/auth',
+    title: isLoggedIn.value ? self.value?.username ?? '[Unknown User]' : 'Auth',
+    route: isLoggedIn.value ? '/profile' : '/auth',
   },
 ]
 
@@ -64,6 +65,7 @@ const handleClickItem = (item: RouteItem) => {
         >
           <div class="icon">
             <Avatar
+              class="z-10"
               v-if="route.key === BottomNavigationRoute.Profile && isLoggedIn"
               :source="self?.avatar"
               :size="24"
