@@ -6,9 +6,9 @@ import {
 import { routes } from './routes'
 
 const router = createRouter({
-  history: import.meta.env.VITE_ENABLE_HASH_MODE
-    ? createWebHashHistory(import.meta.env.BASE_URL)
-    : createWebHistory(import.meta.env.BASE_URL),
+  history: import.meta.env.VITE_HASH_MODE_ENABLED
+    ? createWebHashHistory()
+    : createWebHistory(),
   routes,
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })

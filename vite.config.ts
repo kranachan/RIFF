@@ -10,7 +10,6 @@ export default defineConfig(({ mode }) => {
   Object.assign(process.env, loadEnv(mode, process.cwd()))
 
   return {
-    base: process.env.VITE_BASE_URL,
     plugins: [vue(), svgLoader()],
     resolve: {
       alias: {
