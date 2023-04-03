@@ -22,24 +22,16 @@ enum AuthScheme {
 const authScheme = ref<AuthScheme>(AuthScheme.SignIn)
 
 interface SignInSet {
-  username?: string
+  email?: string
   password?: string
 }
 interface SingUpSet extends SignInSet {
-  email?: string
+  username?: string
   code?: string
 }
 
-const signInSet = reactive<SignInSet>({
-  username: undefined,
-  password: undefined,
-})
-const signUpSet = reactive<SingUpSet>({
-  username: undefined,
-  email: undefined,
-  password: undefined,
-  code: undefined,
-})
+const signInSet = reactive<SignInSet>({})
+const signUpSet = reactive<SingUpSet>({})
 
 const { app } = useStore()
 const { isLoggedIn } = storeToRefs(app)
@@ -54,7 +46,7 @@ onMounted(() => {
 const isSignIn = computed(() => authScheme.value === AuthScheme.SignIn)
 const isSignUp = computed(() => authScheme.value === AuthScheme.SignUp)
 const isValidSignInSet = computed(() =>
-  Boolean(signInSet.username && signInSet.password),
+  Boolean(signInSet.email && signInSet.password),
 )
 const isValidSignUpSet = computed(() => {
   const { username, email, password, code } = signUpSet
@@ -72,7 +64,7 @@ const signIn = async () => {
   if (!isValidSignInSet.value) {
     return
   }
-  const res = await AuthApi.login(signInSet.username!, signInSet.password!)
+  const res = await AuthApi.login(signInSet.email!, signInSet.password!)
   next(res)
 }
 
@@ -138,7 +130,7 @@ const toggleAuthScheme = () => {
   <b class="welcome-text">Welcome to RIFF</b>
 
   <form v-if="isSignIn" class="frame" @submit.prevent="signIn">
-    <TextField placeholder="Email" v-model="signInSet.username" />
+    <TextField placeholder="Email" v-model="signInSet.email" />
     <TextField
       type="password"
       placeholder="Password"
