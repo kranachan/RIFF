@@ -3,6 +3,11 @@
   @apply text-sm px-4 py-2 rounded-lg outline-none;
   @apply border-[3px] border-transparent;
 
+  &:invalid,
+  &:focus:invalid {
+    @apply border-emphasize/30;
+  }
+
   &:focus {
     @apply border-primary/30;
   }

@@ -13,6 +13,18 @@ import { useRouter } from 'vue-router'
 import { SelfWithToken } from '@/models/user'
 import { storeToRefs } from 'pinia'
 import { useIntervalFn } from '@vueuse/shared'
+import {
+  usernameRegex,
+  passwordRegex,
+  emailRegex,
+  verificationCodeRegex,
+  validateSignIn,
+  validateSignUp,
+  regex2PatternString,
+  validateEmail,
+  createTippy,
+} from '@/utils'
+import { SignInSet, SignUpSet } from '@/constants'
 
 enum AuthScheme {
   SignIn,
@@ -21,17 +33,8 @@ enum AuthScheme {
 
 const authScheme = ref<AuthScheme>(AuthScheme.SignIn)
 
-interface SignInSet {
-  email?: string
-  password?: string
-}
-interface SingUpSet extends SignInSet {
-  username?: string
-  code?: string
-}
-
 const signInSet = reactive<SignInSet>({})
-const signUpSet = reactive<SingUpSet>({})
+const signUpSet = reactive<SignUpSet>({})
 
 const { app } = useStore()
 const { isLoggedIn } = storeToRefs(app)
@@ -43,15 +46,10 @@ onMounted(() => {
   }
 })
 
-const isSignIn = computed(() => authScheme.value === AuthScheme.SignIn)
-const isSignUp = computed(() => authScheme.value === AuthScheme.SignUp)
-const isValidSignInSet = computed(() =>
-  Boolean(signInSet.email && signInSet.password),
-)
-const isValidSignUpSet = computed(() => {
-  const { username, email, password, code } = signUpSet
-  return Boolean(username && email && password && code)
-})
+const isSignInScheme = computed(() => authScheme.value === AuthScheme.SignIn)
+const isSignUpScheme = computed(() => authScheme.value === AuthScheme.SignUp)
+const isValidSignInSet = computed(() => validateSignIn(signInSet))
+const isValidSignUpSet = computed(() => validateSignUp(signUpSet))
 
 const next = (result: SelfWithToken) => {
   const { token, ...self } = result
@@ -110,8 +108,14 @@ const sendVerificationCode = async () => {
 }
 
 const toggleAuthScheme = () => {
-  authScheme.value = isSignIn.value ? AuthScheme.SignUp : AuthScheme.SignIn
+  authScheme.value = isSignInScheme.value
+    ? AuthScheme.SignUp
+    : AuthScheme.SignIn
 }
+
+const tippy = createTippy({
+  trigger: 'focusin',
+})
 </script>
 
 <template>
@@ -122,44 +126,71 @@ const toggleAuthScheme = () => {
       class="toggle-scheme-btn"
       @click="toggleAuthScheme"
     >
-      {{ isSignIn ? 'Sign Up' : 'Sign In' }}
+      {{ isSignInScheme ? 'Sign Up' : 'Sign In' }}
     </Button>
   </div>
 
   <Picture :png-source="AuthBannerPng" :webp-source="AuthBannerWebp" />
   <b class="welcome-text">Welcome to RIFF</b>
 
-  <form v-if="isSignIn" class="frame" @submit.prevent="signIn">
-    <TextField placeholder="Email" v-model="signInSet.email" />
+  <form v-if="isSignInScheme" class="frame" @submit.prevent="signIn">
+    <TextField
+      type="email"
+      placeholder="Email"
+      v-model="signInSet.email"
+      :pattern="regex2PatternString(emailRegex)"
+      v-tippy="tippy('Example: me@riff.rocks.')"
+    />
     <TextField
       type="password"
       placeholder="Password"
       v-model="signInSet.password"
+      :pattern="regex2PatternString(passwordRegex)"
+      v-tippy="tippy('At least 8 characters.')"
     />
     <Button class="action-btn" :disabled="!isValidSignInSet">Sign In</Button>
   </form>
 
-  <form v-if="isSignUp" class="frame" @submit.prevent="signUp">
-    <TextField placeholder="Username" v-model="signUpSet.username" />
+  <form v-if="isSignUpScheme" class="frame" @submit.prevent="signUp">
+    <TextField
+      placeholder="Username"
+      v-model="signUpSet.username"
+      :pattern="regex2PatternString(usernameRegex)"
+      v-tippy="tippy('Allow letters, numbers, and underscores.')"
+    />
     <TextField
       type="password"
       placeholder="Password"
       v-model="signUpSet.password"
+      :pattern="regex2PatternString(passwordRegex)"
+      v-tippy="tippy('At least 8 characters.')"
     />
-    <TextField placeholder="Email" v-model="signUpSet.email" />
+    <TextField
+      type="email"
+      placeholder="Email"
+      v-model="signUpSet.email"
+      :pattern="regex2PatternString(emailRegex)"
+      v-tippy="tippy('Example: me@riff.rocks.')"
+    />
+
     <div class="verification">
       <TextField
         class="verification-field"
         placeholder="Verification Code"
         v-model="signUpSet.code"
+        maxlength="6"
+        :pattern="regex2PatternString(verificationCodeRegex)"
+        v-tippy="tippy('6-digit number.')"
       />
       <Button
         class="verification-btn"
         @click="sendVerificationCode"
-        :disabled="!signUpSet.email || isActive"
-        >Send {{ isActive ? `(${sendableCountdown})` : null }}</Button
+        :disabled="!validateEmail(signUpSet.email) || isActive"
       >
+        Send {{ isActive ? `(${sendableCountdown})` : null }}
+      </Button>
     </div>
+
     <Button class="action-btn" :disabled="!isValidSignUpSet">Sign Up</Button>
   </form>
 </template>
