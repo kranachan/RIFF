@@ -138,6 +138,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@popperjs/core@^2.9.0":
+  version "2.11.7"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.7.tgz#ccab5c8f7dc557a52ca3288c10075c9ccd37fff7"
+  integrity sha512-Cr4OjIkipTtcXKjAsm8agyleBuDHvxzeBoa1v543lbv1YaIwQjESsVcmjiWiPEbC1FIeHOG/Op9kdCmAmiS3Kw==
+
 "@trysound/sax@0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
@@ -1072,6 +1077,13 @@ tailwindcss@^3.2.4:
     quick-lru "^5.1.1"
     resolve "^1.22.1"
 
+tippy.js@^6.3.7:
+  version "6.3.7"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.3.7.tgz#8ccfb651d642010ed9a32ff29b0e9e19c5b8c61c"
+  integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
+  dependencies:
+    "@popperjs/core" "^2.9.0"
+
 to-regex-range@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
@@ -1154,6 +1166,13 @@ vue-template-compiler@^2.7.14:
   dependencies:
     de-indent "^1.0.2"
     he "^1.2.0"
+
+vue-tippy@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/vue-tippy/-/vue-tippy-6.0.0.tgz#9501b21caf564b0bba1954c6ece25c5f8ddf58fa"
+  integrity sha512-a37/ETYbE1QdAM7PUzc++kUyyoPMpCRSaLC7F2WgMUxjhl4oWNvp9w1ybcIix+oeg3wS57wboatWXEjX9mnYEw==
+  dependencies:
+    tippy.js "^6.3.7"
 
 vue-tsc@^1.0.24:
   version "1.0.24"

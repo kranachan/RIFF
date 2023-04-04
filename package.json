@@ -18,7 +18,8 @@
     "vue": "^3.2.45",
     "vue-lazyload": "^3.0.0-rc.2",
     "vue-router": "^4.1.6",
-    "vue-starport": "^0.3.0"
+    "vue-starport": "^0.3.0",
+    "vue-tippy": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.19",
