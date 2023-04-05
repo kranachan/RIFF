@@ -1,9 +1,10 @@
-import { SelfWithToken } from '@/models/user'
-import { HttpInstance } from '..'
+import { Self, SelfWithToken } from '@/models/user'
+import { createHeadersWithToken } from '@/utils'
+import { HttpStatic } from '..'
 
 class Auth {
   get root() {
-    return new HttpInstance('auth')
+    return new HttpStatic('auth')
   }
 
   login = async (email: string, password: string): Promise<SelfWithToken> => {
@@ -32,6 +33,12 @@ class Auth {
       password,
       code,
     })
+    return resp.data
+  }
+
+  loginByToken = async (token: string): Promise<Self> => {
+    const headers = createHeadersWithToken(token)
+    const resp = await this.root.entry('/login-by-token').get<Self>({ headers })
     return resp.data
   }
 }
