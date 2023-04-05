@@ -6,12 +6,9 @@ class Auth {
     return new HttpInstance('auth')
   }
 
-  login = async (
-    username: string,
-    password: string,
-  ): Promise<SelfWithToken> => {
+  login = async (email: string, password: string): Promise<SelfWithToken> => {
     const resp = await this.root.entry('/login').post<SelfWithToken>({
-      username,
+      username: email, // Due to some limitation of passport, the username here actually accepts an email address
       password,
     })
     return resp.data
