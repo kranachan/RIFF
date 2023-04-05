@@ -1,6 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 
-export class HttpInstance {
+const defaultHeaderOptions: AxiosRequestConfig['headers'] = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json; charset=utf-8',
+}
+
+export class HttpStatic {
   private $http: AxiosInstance
   private $entryRoute: string
 
@@ -13,7 +18,10 @@ export class HttpInstance {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.get<T, R>(requestUrl, config)
+    const response = await this.$http.get<T, R>(requestUrl, {
+      ...defaultHeaderOptions,
+      ...config,
+    })
     return response
   }
 
@@ -22,7 +30,10 @@ export class HttpInstance {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.post<T, R>(requestUrl, data, config)
+    const response = await this.$http.post<T, R>(requestUrl, data, {
+      ...defaultHeaderOptions,
+      ...config,
+    })
     return response
   }
 
@@ -31,7 +42,10 @@ export class HttpInstance {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.put<T, R>(requestUrl, data, config)
+    const response = await this.$http.put<T, R>(requestUrl, data, {
+      ...defaultHeaderOptions,
+      ...config,
+    })
     return response
   }
 
@@ -39,11 +53,14 @@ export class HttpInstance {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.delete<T, R>(requestUrl, config)
+    const response = await this.$http.delete<T, R>(requestUrl, {
+      ...defaultHeaderOptions,
+      ...config,
+    })
     return response
   }
 
-  entry = (path: string): HttpInstance => {
+  entry = (path: string): HttpStatic => {
     this.$entryRoute = path
     return this
   }

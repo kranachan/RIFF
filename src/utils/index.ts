@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from 'axios'
 import { TippyOptions } from 'vue-tippy'
 
 /**
@@ -27,6 +28,14 @@ export const createTippy = (
     content,
   })
 }
+
+export const createHeadersWithToken = (
+  token: string,
+  options?: AxiosRequestConfig['headers'],
+) => ({
+  Authorization: `Bearer ${token}`,
+  ...options,
+})
 
 export * from './auth'
 export * from './localstorage'
