@@ -51,32 +51,36 @@ const isSignUpScheme = computed(() => authScheme.value === AuthScheme.SignUp)
 const isValidSignInSet = computed(() => validateSignIn(signInSet))
 const isValidSignUpSet = computed(() => validateSignUp(signUpSet))
 
-const next = (result: SelfWithToken) => {
+const next = async (result: SelfWithToken) => {
   const { token, ...self } = result
-  app.self = self
-  setLocalStorage('token', token)
-  router.push('/profile')
+  try {
+    await setLocalStorage('token', token)
+    app.self = self
+    router.push('/profile')
+  } catch (e) {
+    console.warn(e)
+  }
 }
 
 const signIn = async () => {
   if (!isValidSignInSet.value) {
     return
   }
-  const res = await AuthApi.login(signInSet.email!, signInSet.password!)
-  next(res)
+  const resp = await AuthApi.login(signInSet.email!, signInSet.password!)
+  await next(resp)
 }
 
 const signUp = async () => {
   if (!isValidSignUpSet.value) {
     return
   }
-  const res = await AuthApi.register(
+  const resp = await AuthApi.register(
     signUpSet.username!,
     signUpSet.email!,
     signUpSet.password!,
     signUpSet.code!,
   )
-  next(res)
+  await next(resp)
 }
 
 const sendableCountdown = ref<number>(60)
