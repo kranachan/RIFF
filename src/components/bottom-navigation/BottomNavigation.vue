@@ -17,9 +17,9 @@ interface RouteItem {
 }
 
 enum BottomNavigationRoute {
-  Explore,
-  Following,
-  Profile,
+  Explore = 'explore',
+  Following = 'following',
+  Profile = 'profile',
 }
 
 const { app } = useStore()
@@ -47,7 +47,10 @@ const routes = computed<RouteItem[]>(() => [
 ])
 
 const router = useRouter()
-const activeKey = ref(BottomNavigationRoute.Explore)
+const initialRouteName = router.currentRoute.value.name
+const initialKey = initialRouteName === 'auth' ? 'profile' : initialRouteName
+
+const activeKey = ref(initialKey)
 
 const handleClickItem = (item: RouteItem) => {
   activeKey.value = item.key
