@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { LucideIconKey } from '@/constants/icon'
 import Icon from '@/components/icon/Icon.vue'
@@ -8,6 +8,7 @@ import Avatar from '@/components/avatar/Avatar.vue'
 import { useStore } from '@/store'
 import { storeToRefs } from 'pinia'
 import { computed } from '@vue/reactivity'
+import { onKeyboardShow } from '@/utils'
 
 interface RouteItem {
   key: BottomNavigationRoute
@@ -51,6 +52,13 @@ const initialRouteName = router.currentRoute.value.name
 const initialKey = initialRouteName === 'auth' ? 'profile' : initialRouteName
 
 const activeKey = ref(initialKey)
+const showBottomNavigation = ref(true)
+
+onMounted(() => {
+  onKeyboardShow((show) => {
+    showBottomNavigation.value = !show
+  })
+})
 
 const handleClickItem = (item: RouteItem) => {
   activeKey.value = item.key
@@ -59,7 +67,7 @@ const handleClickItem = (item: RouteItem) => {
 </script>
 
 <template>
-  <FloatingLand>
+  <FloatingLand :show="showBottomNavigation">
     <div class="navigation">
       <template v-for="route in routes" :key="route.key">
         <div
