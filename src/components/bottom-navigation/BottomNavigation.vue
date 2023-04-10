@@ -53,6 +53,10 @@ const handleClickItem = (item: RouteItem) => {
   activeKey.value = item.key
   router.replace(item.route)
 }
+
+const handleDoubleClickItem = () => {
+  app.isShowCreator = true
+}
 </script>
 
 <template>
@@ -63,6 +67,7 @@ const handleClickItem = (item: RouteItem) => {
           class="navigation-item"
           :class="activeKey === route.key && 'active'"
           @click="handleClickItem(route)"
+          @dblclick="handleDoubleClickItem"
         >
           <div class="icon">
             <Avatar

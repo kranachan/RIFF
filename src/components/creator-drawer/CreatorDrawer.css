@@ -30,30 +30,71 @@
   &-body {
     @apply py-7 px-4;
 
-    .upload {
-      @apply flex w-[6.25rem] h-[6.25rem];
-      @apply items-center justify-center overflow-hidden;
-      @apply border-2 border-hint border-solid;
-      @apply box-border rounded-standard;
-      @apply bg-surface;
+    .image-list {
+      @apply grid grid-cols-3 gap-5;
+      @apply justify-items-stretch;
+    }
 
-      .icon {
-        @apply flex w-6 h-6;
-        @apply items-center justify-center;
-        @apply text-primary;
+    .image {
+      @apply relative;
+
+      padding-bottom: 100%;
+
+      &-wrapper {
+        img {
+          @apply w-full h-full;
+          @apply object-cover;
+        }
       }
+
+      .delete {
+        @apply flex w-5 h-5 top-2 right-2;
+        @apply absolute items-center justify-center;
+        @apply rounded-full;
+        @apply text-white;
+
+        background: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    .upload {
+      @apply relative w-full;
+
+      padding-bottom: 100%;
+
+      &-wrapper {
+        @apply flex;
+        @apply items-center justify-center;
+
+        .icon {
+          @apply flex w-6 h-6;
+          @apply items-center justify-center;
+          @apply text-primary;
+        }
+      }
+    }
+
+    .image-wrapper,.upload-wrapper {
+      @apply w-full h-full;
+      @apply absolute top-0 left-0;
+      @apply border-2 border-hint border-solid;
+      @apply box-border rounded-standard overflow-hidden;
+      @apply bg-surface;
+    }
+
+    .file-input {
+      @apply hidden;
     }
   }
 
   &-footer {
-    @apply flex w-full py-[1.125rem] pr-[1rem];
+    @apply flex w-full py-[1.125rem] px-[1rem];
     @apply absolute bottom-0 left-0 z-10;
     @apply items-center;
     @apply bg-background;
 
-    .tabbar-wrapper {
-      @apply flex flex-1;
-      @apply items-center;
+    .publish {
+      @apply flex-1;
     }
   }
 }

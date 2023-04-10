@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Icon from '@/components/icon/Icon.vue'
 import Logo from '@/assets/branding/logo.svg?component'
+import CreatorDrawer from '@/components/creator-drawer/CreatorDrawer.vue'
 </script>
 
 <template>
@@ -18,6 +19,7 @@ import Logo from '@/assets/branding/logo.svg?component'
       </div>
     </div>
   </div>
+  <CreatorDrawer />
 </template>
 
 <style scoped>

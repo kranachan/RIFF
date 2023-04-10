@@ -5,7 +5,8 @@ import { computed, ref } from 'vue'
 const useAppStore = defineStore('app', () => {
   const self = ref<Self>()
   const isLoggedIn = computed(() => !!self.value)
-  return { self, isLoggedIn }
+  const isShowCreator = ref(false)
+  return { self, isLoggedIn, isShowCreator }
 })
 
 export { useAppStore }
