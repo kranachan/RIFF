@@ -13,7 +13,8 @@ const IMAGE_LIMIT_COUNT = 20
 
 const { app } = useStore()
 
-const fileInputRef = ref()
+const textareaWrapperRef = ref<HTMLDivElement>()
+const fileInputRef = ref<HTMLInputElement>()
 
 const state = reactive<{
   plain: string
@@ -113,6 +114,7 @@ const handleClose = () => {
 
   state.plain = ''
   state.images = []
+  textareaWrapperRef.value && (textareaWrapperRef.value.innerHTML = '')
 }
 
 const allowedPublish = computed(() => state.images.length && state.plain)
@@ -129,6 +131,7 @@ const allowedPublish = computed(() => state.images.length && state.plain)
       <div class="creator-header">
         <div class="avatar"></div>
         <div
+          ref="textareaWrapperRef"
           class="textarea-wrapper"
           contenteditable
           @input="(e) => onTextareaWrapperInput(e)"
