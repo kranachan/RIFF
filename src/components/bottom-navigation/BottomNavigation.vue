@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { capitalize, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { LucideIconKey } from '@/constants/icon'
 import Icon from '@/components/icon/Icon.vue'
@@ -17,9 +17,10 @@ interface RouteItem {
 }
 
 enum BottomNavigationRoute {
-  Explore,
-  Following,
-  Profile,
+  Explore = 'explore',
+  Following = 'following',
+  Profile = 'profile',
+  Auth = 'auth',
 }
 
 const { app } = useStore()
@@ -39,15 +40,30 @@ const routes = computed<RouteItem[]>(() => [
     route: '/following',
   },
   {
-    key: BottomNavigationRoute.Profile,
+    key: isLoggedIn.value
+      ? BottomNavigationRoute.Profile
+      : BottomNavigationRoute.Auth,
     icon: 'AtSign',
-    title: isLoggedIn.value ? self.value?.username ?? '[Unknown User]' : 'Auth',
+    title: isLoggedIn.value ? self.value?.username ?? '[Unknown]' : 'Auth',
     route: isLoggedIn.value ? '/profile' : '/auth',
   },
 ])
 
 const router = useRouter()
-const activeKey = ref(BottomNavigationRoute.Explore)
+const routeName = router.currentRoute.value.name
+
+const initialKey = (() => {
+  if (!routeName) {
+    return
+  }
+  const isValidRoute = capitalize(routeName.toString()) in BottomNavigationRoute
+  if (!isValidRoute) {
+    return
+  }
+  return routeName as BottomNavigationRoute
+})()
+
+const activeKey = ref(initialKey)
 
 const handleClickItem = (item: RouteItem) => {
   activeKey.value = item.key
