@@ -1151,6 +1151,11 @@ vue-router@^4.1.6:
   dependencies:
     "@vue/devtools-api" "^6.4.5"
 
+vue-sonner@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/vue-sonner/-/vue-sonner-0.3.1.tgz#8d9f7b4e1b08b464b32f906a8e70f18f70d30f80"
+  integrity sha512-jexivp2iuP3gqj2u7Q5jnLv4vjOnW1Gdrtjb6qVEzIVuqoiU80B+iLi/5VmgC5D2Mk+hi16jr7ZYOaR71Gqecw==
+
 vue-starport@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/vue-starport/-/vue-starport-0.3.0.tgz#426084975e496cb10f85825564f3a05dfc0fa931"
