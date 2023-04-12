@@ -13,6 +13,7 @@ import { useRouter } from 'vue-router'
 import { SelfWithToken } from '@/models/user'
 import { storeToRefs } from 'pinia'
 import { useIntervalFn } from '@vueuse/shared'
+import { toast } from 'vue-sonner'
 import {
   usernameRegex,
   passwordRegex,
@@ -56,6 +57,7 @@ const next = async (result: SelfWithToken) => {
   try {
     await setLocalStorage('token', token)
     app.self = self
+    toast.success('Authenticated')
     router.push('/profile')
   } catch (e) {
     console.warn(e)

@@ -6,6 +6,7 @@ import { applyTheme, defaultTheme } from '@/theme/index'
 import { AuthApi } from './api/auth'
 import { useStore } from './store'
 import { getLocalStorage } from './utils'
+import { Toaster } from 'vue-sonner'
 
 const { app } = useStore()
 
@@ -22,4 +23,5 @@ onMounted(async () => {
 
 <template>
   <RouterView />
+  <Toaster position="top-center" />
 </template>
