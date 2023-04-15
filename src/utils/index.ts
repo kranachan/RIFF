@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from 'axios'
 import { TippyOptions } from 'vue-tippy'
+import { getLocalStorage } from './localstorage'
 
 /**
  * Converts a regular expression to its pattern string representation,
@@ -29,13 +30,29 @@ export const createTippy = (
   })
 }
 
-export const createHeadersWithToken = (
-  token: string,
-  options?: AxiosRequestConfig['headers'],
-) => ({
-  Authorization: `Bearer ${token}`,
-  ...options,
-})
+export const validateToken = async () => !!(await getLocalStorage('token'))
+
+export const withDefaultRequestOptions = async (
+  config?: AxiosRequestConfig,
+): Promise<AxiosRequestConfig> => {
+  const token = await getLocalStorage('token')
+  const Authorization = token && `Bearer ${token}`
+  const defaultHeaders = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json; charset=utf-8',
+    Authorization,
+  }
+
+  if (!config) {
+    return { headers: defaultHeaders }
+  }
+
+  const { headers, ...rest } = config
+  return {
+    headers: { ...defaultHeaders, ...headers },
+    ...rest,
+  }
+}
 
 export * from './auth'
 export * from './localstorage'

@@ -1,5 +1,4 @@
 import { Self, SelfWithToken } from '@/models/user'
-import { createHeadersWithToken } from '@/utils'
 import { HttpStatic } from '..'
 
 class Auth {
@@ -36,9 +35,8 @@ class Auth {
     return resp.data
   }
 
-  loginByToken = async (token: string): Promise<Self> => {
-    const headers = createHeadersWithToken(token)
-    const resp = await this.root.entry('/login-by-token').get<Self>({ headers })
+  loginByToken = async (): Promise<Self> => {
+    const resp = await this.root.entry('/login-by-token').get<Self>()
     return resp.data
   }
 }

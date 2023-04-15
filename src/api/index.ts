@@ -1,9 +1,5 @@
+import { withDefaultRequestOptions } from '@/utils'
 import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
-
-const defaultHeaderOptions: AxiosRequestConfig['headers'] = {
-  Accept: 'application/json',
-  'Content-Type': 'application/json; charset=utf-8',
-}
 
 export class HttpStatic {
   private $http: AxiosInstance
@@ -18,10 +14,8 @@ export class HttpStatic {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.get<T, R>(requestUrl, {
-      ...defaultHeaderOptions,
-      ...config,
-    })
+    const options = await withDefaultRequestOptions(config)
+    const response = await this.$http.get<T, R>(requestUrl, options)
     return response
   }
 
@@ -30,10 +24,8 @@ export class HttpStatic {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.post<T, R>(requestUrl, data, {
-      ...defaultHeaderOptions,
-      ...config,
-    })
+    const options = await withDefaultRequestOptions(config)
+    const response = await this.$http.post<T, R>(requestUrl, data, options)
     return response
   }
 
@@ -42,10 +34,8 @@ export class HttpStatic {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.put<T, R>(requestUrl, data, {
-      ...defaultHeaderOptions,
-      ...config,
-    })
+    const options = await withDefaultRequestOptions(config)
+    const response = await this.$http.put<T, R>(requestUrl, data, options)
     return response
   }
 
@@ -53,10 +43,8 @@ export class HttpStatic {
     config?: AxiosRequestConfig,
   ): Promise<R> => {
     const requestUrl = this.$entryRoute
-    const response = await this.$http.delete<T, R>(requestUrl, {
-      ...defaultHeaderOptions,
-      ...config,
-    })
+    const options = await withDefaultRequestOptions(config)
+    const response = await this.$http.delete<T, R>(requestUrl, options)
     return response
   }
 
