@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import Icon from '@/components/icon/Icon.vue'
-import { Image } from '@/models/media'
+import { Album } from '@/models'
 import { useElementBounding } from '@vueuse/core'
 import { ref, watchEffect } from 'vue'
+import { Starport } from 'vue-starport'
+import ImageProvider from '../image-provider/ImageProvider.vue'
 
 const props = defineProps<{
-  image: Image
-  liked: boolean
+  album: Album
 }>()
 
-const likeBtnRef = ref<HTMLButtonElement>()
 const containerRef = ref<HTMLImageElement>()
-
 const imageHeight = ref<number>()
+const image = props.album.content.image
 
 watchEffect(() => {
   const containerWidth = useElementBounding(containerRef).width.value
-  imageHeight.value = Math.floor(
-    (containerWidth / props.image.width) * props.image.height,
-  )
+  imageHeight.value = Math.floor((containerWidth / image.width) * image.height)
 })
 
 const onLikeClicked = (e: MouseEvent) => {}
@@ -26,33 +24,22 @@ const onLikeClicked = (e: MouseEvent) => {}
 
 <template>
   <div ref="containerRef" class="root">
-    <div
-      class="image"
-      v-motion
-      :initial="{
-        opacity: 0,
-        filter: 'blur(5px)',
-      }"
-      :enter="{
-        opacity: 1,
-        filter: 'blur(0px)',
-        transition: { duration: 800 },
-      }"
-      :style="{
-        backgroundImage: `url(${image.url})`,
-        height: `${imageHeight}px`,
-      }"
-    />
+    <Starport
+      :port="album.id"
+      :style="{ height: `${imageHeight}px` }"
+      :duration="500"
+    >
+      <ImageProvider :url="image.url" />
+    </Starport>
     <button
-      ref="likeBtnRef"
       class="action-like"
-      @click="onLikeClicked"
+      @click.stop="onLikeClicked"
       v-motion
       :initial="{ scale: 1 }"
       :visible="{ scale: 1 }"
       :tapped="{ scale: 0.9 }"
     >
-      <Icon :class="liked && 'liked'" name="Heart" />
+      <Icon :class="album.liked && 'liked'" name="Heart" />
     </button>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ImagePreview from '@/components/image-preview/ImagePreview.vue'
 import { Album } from '@/models'
+import router from '@/router'
 
 /**
  * TODO: add visual list support
@@ -30,6 +31,10 @@ const getDisplayable = (colIndex: number, imageIndex: number): boolean => {
     .map((n) => colIndex + props.col * n)
     .includes(imageIndex + 1)
 }
+
+const onAlbumClicked = (albumId: string) => {
+  router.push(`/album/${albumId}`)
+}
 </script>
 
 <template>
@@ -38,9 +43,9 @@ const getDisplayable = (colIndex: number, imageIndex: number): boolean => {
       <template v-for="(album, albumIndex) in albums">
         <ImagePreview
           class="image-preview"
+          :album="album"
+          @click="onAlbumClicked(album.id)"
           v-if="getDisplayable(colIndex, albumIndex)"
-          :image="album.content.image"
-          :liked="album.liked"
         />
       </template>
     </div>

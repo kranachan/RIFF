@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
+import { StarportCarrier } from 'vue-starport'
 import { ColorScheme } from '@/constants/theme'
 import { validateToken } from '@/utils'
 import { applyTheme, defaultTheme } from '@/theme/index'
@@ -22,6 +23,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <RouterView />
+  <StarportCarrier>
+    <RouterView />
+  </StarportCarrier>
   <Toaster position="top-center" />
 </template>

@@ -5,10 +5,17 @@ import MasonryImageStream from '@/components/masonry-image-stream/MasonryImageSt
 import { onMounted } from 'vue'
 import { useStore } from '@/store'
 
-const { albums } = useStore()
+const { albumStore } = useStore()
+const recommendedAlbums = albumStore.recommendedAlbumList
 
 onMounted(async () => {
-  await albums.actions.fetchRecommendedAlbums()
+  if (albumStore.recommendedAlbumList.length === 0) {
+    try {
+      await albumStore.fetchRecommendedAlbums()
+    } catch (error) {
+      console.warn(error)
+    }
+  }
 })
 </script>
 
@@ -27,7 +34,7 @@ onMounted(async () => {
       </div>
     </div>
   </div>
-  <MasonryImageStream :albums="albums.state.data ?? []" />
+  <MasonryImageStream :albums="recommendedAlbums ?? []" />
 </template>
 
 <style scoped>
