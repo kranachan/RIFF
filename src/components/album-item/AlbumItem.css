@@ -1,5 +1,5 @@
 .root {
-  @apply w-full text-foreground;
+  @apply w-full text-foreground bg-background;
 }
 
 .header {
@@ -62,11 +62,15 @@
     @apply flex py-4 gap-2 font-semibold;
   }
 
-  & .forward {
+  & .forward-action {
     @apply relative ml-auto;
 
-    & .rough {
-      @apply absolute right-0 -z-10;
+    &-text {
+      @apply relative;
+    }
+
+    &-rough {
+      @apply absolute right-0;
     }
   }
 }
