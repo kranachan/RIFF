@@ -59,8 +59,10 @@ const onBackClicked = () => {
     <div class="actions">
       <button><Icon name="MessageCircle" /> {{ album.commentCount }}</button>
       <button><Icon name="Bookmark" /></button>
-      <button class="forward">
-        <Icon name="Forward" />Share<Rough class="rough" />
+      <button class="forward-action">
+        <Rough class="forward-action-rough" />
+        <Icon name="Forward" />
+        <span class="forward-action-text">Share</span>
       </button>
     </div>
     <Divider />
