@@ -1,0 +1,72 @@
+.root {
+  @apply w-full text-foreground;
+}
+
+.header {
+  @apply flex items-center gap-2 pl-4;
+
+  &.with-back {
+    @apply pl-0;
+  }
+
+  & .back-action {
+    @apply pl-4 py-5;
+  }
+
+  & .info {
+    @apply flex flex-col;
+
+    & .name {
+      @apply text-sm;
+    }
+
+    & .date {
+      @apply text-xs;
+    }
+  }
+
+  & .menu-action {
+    @apply ml-auto pr-4 py-6;
+  }
+}
+
+.image-with-action {
+  @apply relative;
+
+  & .image-wrapper {
+    @apply h-[12.25rem];
+  }
+
+  & .like-action {
+    @apply absolute -bottom-8 right-4 w-16 h-16;
+    @apply border-2 border-foreground rounded-full;
+    @apply flex items-center justify-center bg-background;
+
+    /* For better visual experience */
+    &-icon {
+      @apply mt-0.5;
+    }
+  }
+}
+
+.plain {
+  @apply px-4 pt-4 text-base;
+
+  width: calc(100% - 100px);
+}
+
+.actions {
+  @apply flex px-4 gap-2;
+
+  & button {
+    @apply flex py-4 gap-2 font-semibold;
+  }
+
+  & .forward {
+    @apply relative ml-auto;
+
+    & .rough {
+      @apply absolute right-0 -z-10;
+    }
+  }
+}
