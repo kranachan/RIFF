@@ -3,11 +3,11 @@
 }
 
 .image {
-  @apply w-full bg-cover;
+  @apply w-full h-full bg-cover;
 }
 
 .action-like {
-  @apply absolute right-0 bottom-0 p-2;
+  @apply absolute right-0 bottom-0 pl-5 pt-5 pr-2 pb-2;
   @apply text-white cursor-pointer;
 
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 40%));

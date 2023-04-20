@@ -6,6 +6,11 @@ class AlbumInstance {
     return new HttpStatic('album')
   }
 
+  getAlbumById = async (id: string): Promise<Album> => {
+    const resp = await this.root.entry(`/${id}`).get<Album>()
+    return resp.data
+  }
+
   getRecommends = async (): Promise<Album[]> => {
     // TODO: add pagination
     const resp = await this.root.entry('/recommends').get<Album[]>()
