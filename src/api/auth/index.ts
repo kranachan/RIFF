@@ -1,7 +1,7 @@
 import { Self, SelfWithToken } from '@/models/user'
 import { HttpStatic } from '..'
 
-class Auth {
+class AuthInstance {
   get root() {
     return new HttpStatic('auth')
   }
@@ -41,4 +41,4 @@ class Auth {
   }
 }
 
-export const AuthApi = new Auth()
+export const AuthApi = new AuthInstance()

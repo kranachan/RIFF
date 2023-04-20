@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import Icon from '@/components/icon/Icon.vue'
 import Logo from '@/assets/branding/logo.svg?component'
+import MasonryImageStream from '@/components/masonry-image-stream/MasonryImageStream.vue'
+import { onMounted } from 'vue'
+import { useStore } from '@/store'
+
+const { albums } = useStore()
+
+onMounted(async () => {
+  await albums.actions.fetchRecommendedAlbums()
+})
 </script>
 
 <template>
@@ -18,6 +27,7 @@ import Logo from '@/assets/branding/logo.svg?component'
       </div>
     </div>
   </div>
+  <MasonryImageStream :albums="albums.state.data ?? []" />
 </template>
 
 <style scoped>

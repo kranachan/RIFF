@@ -1,5 +1,9 @@
+.root {
+  @apply relative bg-surface;
+}
+
 .image {
-  @apply w-full object-cover;
+  @apply w-full bg-cover;
 }
 
 .action-like {
