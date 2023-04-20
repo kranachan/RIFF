@@ -1,36 +1,57 @@
 <script setup lang="ts">
 import Icon from '@/components/icon/Icon.vue'
-import { gsap } from 'gsap'
+import { Image } from '@/models/media'
+import { useElementBounding } from '@vueuse/core'
+import { ref, watchEffect } from 'vue'
 
-defineProps<{
-  /**
-   * TODO: add post information
-   */
-  source: string
+const props = defineProps<{
+  image: Image
   liked: boolean
 }>()
 
-const onLikeClicked = (e: MouseEvent) => {
-  /**
-   * TODO: add toggle event
-   */
-  gsap.fromTo(
-    e.target,
-    { scale: 0.25, rotate: 45 },
-    {
-      scale: 1,
-      rotate: 0,
-      ease: 'elastic',
-      duration: 0.8,
-    },
+const likeBtnRef = ref<HTMLButtonElement>()
+const containerRef = ref<HTMLImageElement>()
+
+const imageHeight = ref<number>()
+
+watchEffect(() => {
+  const containerWidth = useElementBounding(containerRef).width.value
+  imageHeight.value = Math.floor(
+    (containerWidth / props.image.width) * props.image.height,
   )
-}
+})
+
+const onLikeClicked = (e: MouseEvent) => {}
 </script>
 
 <template>
-  <div>
-    <img class="image" v-lazy="source" />
-    <button class="action-like" @click="onLikeClicked">
+  <div ref="containerRef" class="root">
+    <div
+      class="image"
+      v-motion
+      :initial="{
+        opacity: 0,
+        filter: 'blur(5px)',
+      }"
+      :enter="{
+        opacity: 1,
+        filter: 'blur(0px)',
+        transition: { duration: 800 },
+      }"
+      :style="{
+        backgroundImage: `url(${image.url})`,
+        height: `${imageHeight}px`,
+      }"
+    />
+    <button
+      ref="likeBtnRef"
+      class="action-like"
+      @click="onLikeClicked"
+      v-motion
+      :initial="{ scale: 1 }"
+      :visible="{ scale: 1 }"
+      :tapped="{ scale: 0.9 }"
+    >
       <Icon :class="liked && 'liked'" name="Heart" />
     </button>
   </div>

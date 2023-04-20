@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { gsap } from 'gsap'
-import { Image } from '@/constants/image'
 import ImagePreview from '@/components/image-preview/ImagePreview.vue'
+import { Album } from '@/models'
 
 /**
  * TODO: add visual list support
  */
-const { images, col, gap } = withDefaults(
+const props = withDefaults(
   defineProps<{
-    images: Image[]
+    albums: Album[]
     col?: number
     gap?: number
   }>(),
@@ -20,49 +18,29 @@ const { images, col, gap } = withDefaults(
 )
 
 const rootStyle = {
-  gridTemplateColumns: `repeat(${col}, minmax(0, 1fr))`,
-  gap: `${gap}px`,
+  gridTemplateColumns: `repeat(${props.col}, minmax(0, 1fr))`,
+  gap: `${props.gap}px`,
 }
 
 const colStyle = { gap: rootStyle.gap }
-
 const COL_RENDER_SIZE = 50
 
 const getDisplayable = (colIndex: number, imageIndex: number): boolean => {
   return Array.from(Array(COL_RENDER_SIZE).keys())
-    .map((n) => colIndex + col * n)
+    .map((n) => colIndex + props.col * n)
     .includes(imageIndex + 1)
 }
-
-onMounted(() => {
-  gsap.fromTo(
-    '.image-preview',
-    { scale: 0.5, opacity: 0 },
-    {
-      scale: 1,
-      opacity: 1,
-      ease: 'power1.inOut',
-      duration: 0.3,
-      delay: 0.35,
-      stagger: {
-        amount: 0.4,
-        grid: [col, images.length / col],
-        from: 'start',
-      },
-    },
-  )
-})
 </script>
 
 <template>
   <div class="root" :style="rootStyle">
     <div class="col" v-for="colIndex in col" :key="colIndex" :style="colStyle">
-      <template v-for="(image, imageIndex) in images">
+      <template v-for="(album, albumIndex) in albums">
         <ImagePreview
           class="image-preview"
-          v-if="getDisplayable(colIndex, imageIndex)"
-          :source="image.source"
-          :liked="image.liked"
+          v-if="getDisplayable(colIndex, albumIndex)"
+          :image="album.content.image"
+          :liked="album.liked"
         />
       </template>
     </div>
