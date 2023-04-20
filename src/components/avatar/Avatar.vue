@@ -16,7 +16,7 @@ const style = { width: sizeWithUnit, height: sizeWithUnit }
 </script>
 
 <template>
-  <img class="avatar" v-lazy="source ?? DeafultAvatar" :style="style" />
+  <img class="avatar" :src="source ?? DeafultAvatar" :style="style" />
 </template>
 
 <style scoped>
