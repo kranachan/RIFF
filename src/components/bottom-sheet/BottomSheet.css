@@ -1,4 +1,4 @@
-.drawer {
+.bottom-sheet {
   @apply flex w-full overflow-hidden;
   @apply fixed bottom-0 left-0 z-50;
   @apply flex-col items-center justify-center;

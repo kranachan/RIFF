@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import Drawer from '@/components/drawer/Drawer.vue'
+import BottomSheet from '@/components/bottom-sheet/BottomSheet.vue'
 import Divider from '@/components/divider/Divider.vue'
 import Icon from '@/components/icon/Icon.vue'
 import Button from '@/components/button/Button.vue'
@@ -40,7 +40,7 @@ const onTextareaBlur = () => {
 </script>
 
 <template>
-  <Drawer title="Create" withOverlay :open="true">
+  <BottomSheet title="Create" withOverlay :open="true">
     <div class="creator">
       <div class="creator-header">
         <div class="avatar"></div>
@@ -74,9 +74,9 @@ const onTextareaBlur = () => {
         <Button>Publish</Button>
       </div>
     </div>
-  </Drawer>
+  </BottomSheet>
 </template>
 
 <style scoped>
-@import url('./CreatorDrawer.css');
+@import url('./Composer.css');
 </style>
