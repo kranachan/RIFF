@@ -1,4 +1,3 @@
-import { defaultTheme } from './default'
 import { ColorScheme, Theme } from '@/constants/theme'
 
 export const hex2rgb = (hexColor: string) => {
@@ -36,4 +35,9 @@ export const applyTheme = (
   })
 }
 
-export { defaultTheme }
+export const getUserDeviceColorScheme = () =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? ColorScheme.Dark
+    : ColorScheme.Light
+
+export * from './default'

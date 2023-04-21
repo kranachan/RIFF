@@ -4,6 +4,8 @@ import Logo from '@/assets/branding/logo.svg?component'
 import MasonryImageStream from '@/components/masonry-image-stream/MasonryImageStream.vue'
 import { onMounted } from 'vue'
 import { useStore } from '@/store'
+import { useCycleList } from '@vueuse/core'
+import MenuDrawer from '@/components/menu-drawer/MenuDrawer.vue'
 
 const { albumStore } = useStore()
 const recommendedAlbums = albumStore.recommendedAlbumList
@@ -17,12 +19,19 @@ onMounted(async () => {
     }
   }
 })
+
+const { state: isDrawerOpened, next: toggleDrawerOpened } = useCycleList([
+  false,
+  true,
+])
 </script>
 
 <template>
   <div class="header">
     <div class="header-fixed">
-      <button class="header-button"><Icon name="Menu" /></button>
+      <button class="header-button" @click="() => toggleDrawerOpened()">
+        <Icon name="Menu" />
+      </button>
       <div class="header-logo">
         <Logo />
       </div>
@@ -35,6 +44,7 @@ onMounted(async () => {
     </div>
   </div>
   <MasonryImageStream :albums="recommendedAlbums ?? []" />
+  <MenuDrawer :open="isDrawerOpened" @close="toggleDrawerOpened" />
 </template>
 
 <style scoped>
