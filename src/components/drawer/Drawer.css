@@ -1,0 +1,20 @@
+.overlay {
+  @apply w-screen h-screen bg-black;
+  @apply top-0 left-0 right-0 bottom-0;
+}
+
+.drawer {
+  @apply top-0 w-56 h-screen shadow-lg;
+  @apply bg-background text-foreground;
+}
+
+.overlay,
+.drawer {
+  @apply absolute z-50;
+
+  /* https://caniuse.com/viewport-unit-variants */
+  height: 100dvh;
+  transition-property: height;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
