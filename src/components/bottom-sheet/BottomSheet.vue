@@ -4,7 +4,7 @@ import Icon from '@/components/icon/Icon.vue'
 import Divider from '@/components/divider/Divider.vue'
 
 /**
- * Todo: fix drawer offset when focus on a input for firefox
+ * Todo: fix offset when focus on a input for firefox
  */
 
 type ChangeType = 'full' | 'half' | 'hide'
@@ -30,7 +30,7 @@ const TOLERANCE_TOP_SIZE = 120
 const TOLERANCE_BOTTOM_SIZE = 140
 const TIME_INTERVAL = 200
 
-const drawerRef = ref<HTMLDivElement>()
+const bottomSheetRef = ref<HTMLDivElement>()
 const containerRef = ref<HTMLDivElement>()
 
 const state = reactive<{
@@ -51,7 +51,7 @@ const state = reactive<{
 
 const handleTouchStart = (evt: TouchEvent) => {
   const { clientY } = evt.changedTouches[0]
-  const drawer = drawerRef.value
+  const bottomSheet = bottomSheetRef.value
   const container = containerRef.value
   const interval = evt.timeStamp - state.lastTouchTimeStamp
 
@@ -59,8 +59,8 @@ const handleTouchStart = (evt: TouchEvent) => {
     state.scrollMode = state.status === 'full' && container.scrollTop > 0
   }
 
-  if (interval > TIME_INTERVAL && drawer) {
-    const { height } = drawer.getBoundingClientRect()
+  if (interval > TIME_INTERVAL && bottomSheet) {
+    const { height } = bottomSheet.getBoundingClientRect()
 
     state.currentHeight = height
     state.touchStarted = true
@@ -70,11 +70,11 @@ const handleTouchStart = (evt: TouchEvent) => {
 
 const handleTouchMove = (evt: TouchEvent) => {
   const { clientY } = evt.changedTouches[0]
-  const drawer = drawerRef.value
+  const bottomSheet = bottomSheetRef.value
   const container = containerRef.value
   const diffY = state.startY - clientY
 
-  if (state.touchStarted && drawer && container) {
+  if (state.touchStarted && bottomSheet && container) {
     const h = +state.currentHeight + diffY
     const direction = diffY >= 0 ? 'top' : 'bottom'
 
@@ -82,7 +82,7 @@ const handleTouchMove = (evt: TouchEvent) => {
       return
     }
 
-    drawer.style.height = Math.min(h, VIEWPORT_HEIGHT) + 'px'
+    bottomSheet.style.height = Math.min(h, VIEWPORT_HEIGHT) + 'px'
   }
 
   evt.preventDefault()
@@ -90,10 +90,10 @@ const handleTouchMove = (evt: TouchEvent) => {
 
 const handleTouchEnd = (evt: TouchEvent) => {
   const { clientY } = evt.changedTouches[0]
-  const drawer = drawerRef.value
+  const bottomSheet = bottomSheetRef.value
   const diffY = clientY - state.startY
 
-  if (state.touchStarted && !state.scrollMode && drawer) {
+  if (state.touchStarted && !state.scrollMode && bottomSheet) {
     let type = state.status
     if (diffY < -TOLERANCE_TOP_SIZE) {
       // move top and satisfy
@@ -126,15 +126,15 @@ const changeStatus = (type: ChangeType) => {
       handleClose()
       break
   }
-  const drawer = drawerRef.value
-  if (drawer) {
-    drawer.style.transition = 'all .25s ease'
-    drawer.style.height = h + 'px'
+  const bottomSheet = bottomSheetRef.value
+  if (bottomSheet) {
+    bottomSheet.style.transition = 'all .25s ease'
+    bottomSheet.style.height = h + 'px'
 
     let timer: NodeJS.Timeout | null = null
     timer = setTimeout(() => {
       timer && clearTimeout(timer)
-      drawer.style.transition = ''
+      bottomSheet.style.transition = ''
     }, TIME_INTERVAL)
     state.status = type
   }
@@ -148,8 +148,8 @@ const handleClose = () => {
 <template>
   <Transition name="popup">
     <div
-      class="drawer"
-      ref="drawerRef"
+      class="bottom-sheet"
+      ref="bottomSheetRef"
       :style="{ height: state.currentHeight + 'px' }"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
@@ -157,15 +157,17 @@ const handleClose = () => {
       @touchcancel="handleTouchCancel"
       v-show="props.open"
     >
-      <div class="drawer-header">
-        <div class="drawer-touch" />
-        <div class="drawer-title" v-if="props.title">{{ props.title }}</div>
+      <div class="bottom-sheet-header">
+        <div class="bottom-sheet-touch" />
+        <div class="bottom-sheet-title" v-if="props.title">
+          {{ props.title }}
+        </div>
       </div>
-      <div class="drawer-close" @click="handleClose" v-if="props.title">
+      <div class="bottom-sheet-close" @click="handleClose" v-if="props.title">
         <Icon name="X" />
       </div>
       <Divider v-if="props.title" />
-      <div class="drawer-container" ref="containerRef">
+      <div class="bottom-sheet-container" ref="containerRef">
         <slot />
       </div>
     </div>
@@ -176,5 +178,5 @@ const handleClose = () => {
 </template>
 
 <style scoped>
-@import url('./Drawer.css');
+@import url('./BottomSheet.css');
 </style>
