@@ -20,7 +20,7 @@ const motions = useMotions()
 <template>
   <transition
     :css="false"
-    @leave="(el, done) => motions.drawerOverlay.leave(done)"
+    @leave="(el: HTMLElement, done: () => void) => motions.drawerOverlay.leave(done)"
   >
     <div
       v-if="open"
@@ -32,7 +32,10 @@ const motions = useMotions()
       :leave="{ opacity: 0 }"
     />
   </transition>
-  <transition :css="false" @leave="(el, done) => motions.drawer.leave(done)">
+  <transition
+    :css="false"
+    @leave="(el: HTMLElement, done: () => void) => motions.drawer.leave(done)"
+  >
     <div
       class="drawer"
       v-if="open"

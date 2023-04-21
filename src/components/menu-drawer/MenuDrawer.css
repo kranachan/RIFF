@@ -1,0 +1,20 @@
+.feats {
+  @apply w-full absolute bottom-0 font-semibold;
+
+  & button {
+    @apply flex gap-x-4 p-4 items-center;
+
+    & .auto {
+      @apply text-placeholder text-sm absolute right-4;
+      @apply px-2 py-0.5 bg-hint rounded-full;
+
+      &.is-auto-scheme {
+        @apply text-primary bg-primary/30;
+      }
+    }
+
+    &:disabled {
+      @apply text-hint;
+    }
+  }
+}
