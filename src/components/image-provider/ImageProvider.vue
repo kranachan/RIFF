@@ -1,13 +1,14 @@
 <script setup lang="ts">
 defineProps<{
   url?: string
+  ripple?: boolean
 }>()
 </script>
 
 <template>
   <div
     class="image"
-    v-wave
+    v-wave="ripple ?? false"
     v-motion
     :initial="{
       opacity: 0,
