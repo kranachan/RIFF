@@ -2,7 +2,7 @@
   @apply w-full absolute bottom-0 font-semibold;
 
   & button {
-    @apply flex gap-x-4 p-4 items-center;
+    @apply w-full flex gap-x-4 p-4 items-center;
 
     & .auto {
       @apply text-placeholder text-sm absolute right-4;

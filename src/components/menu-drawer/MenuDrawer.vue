@@ -61,9 +61,13 @@ const toggleColorScheme = async () => {
       <Button class="mt-4">New Album</Button>
     </section>
     <section class="feats">
-      <button><Icon name="Crown" />Rank</button>
+      <button v-wave><Icon name="Crown" />Rank</button>
       <Divider />
-      <button @click="toggleColorScheme" :disabled="app.getters.isAutoScheme">
+      <button
+        v-wave
+        @click="toggleColorScheme"
+        :disabled="app.getters.isAutoScheme"
+      >
         <Icon :name="app.getters.isLightScheme ? 'Sun' : 'Moon'" />
         {{ app.getters.isLightScheme ? 'Light Mode' : 'Dark Mode' }}
         <span
@@ -74,7 +78,7 @@ const toggleColorScheme = async () => {
         </span>
       </button>
       <Divider />
-      <button><Icon name="Info" />About RIFF</button>
+      <button v-wave><Icon name="Info" />About RIFF</button>
     </section>
   </Drawer>
 </template>

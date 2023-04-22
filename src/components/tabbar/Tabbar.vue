@@ -58,6 +58,7 @@ const autoPosition = (target: HTMLDivElement) => {
     <div class="tabbar-container" ref="containerRef" @scroll="handleMask">
       <div class="tabbar-wrapper">
         <div
+          v-wave
           class="tabbar-item"
           :class="item.key === activeKey ? 'active' : ''"
           v-for="item in list"

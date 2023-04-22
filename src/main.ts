@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import VueLazyload from 'vue-lazyload'
 import router from '@/router'
 import { MotionPlugin } from '@vueuse/motion'
+import VWave from 'v-wave'
 import { plugin as VueTippy, TippyOptions } from 'vue-tippy'
 import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/scale.css'
@@ -19,4 +20,5 @@ app.use<{ defaultProps: TippyOptions }>(VueTippy, {
   defaultProps: { animation: 'scale' },
 })
 app.use(MotionPlugin)
+app.use(VWave, {})
 app.mount('#app')

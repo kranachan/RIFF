@@ -17,6 +17,7 @@ const { variant, disabled } = toRefs(props)
 
 <template>
   <button
+    v-wave
     class="button"
     :class="[variant, disabled && 'disabled']"
     :disabled="disabled"
