@@ -7,6 +7,7 @@ defineProps<{
 <template>
   <div
     class="image"
+    v-wave
     v-motion
     :initial="{
       opacity: 0,
