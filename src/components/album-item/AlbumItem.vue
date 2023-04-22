@@ -43,7 +43,7 @@ const onBackClicked = () => {
     </div>
     <div class="image-with-action">
       <Starport class="image-wrapper" :port="album.id" :duration="500">
-        <ImageProvider :url="album.content.image?.url" />
+        <ImageProvider ripple :url="album.content.image?.url" />
       </Starport>
       <button
         class="like-action"
