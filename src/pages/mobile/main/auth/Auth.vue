@@ -11,7 +11,6 @@ import { setLocalStorage } from '@/utils/localstorage'
 import { useStore } from '@/store'
 import { useRouter } from 'vue-router'
 import { SelfWithToken } from '@/models/user'
-import { storeToRefs } from 'pinia'
 import { useIntervalFn } from '@vueuse/shared'
 import { toast } from 'vue-sonner'
 import {
@@ -38,11 +37,10 @@ const signInSet = reactive<SignInSet>({})
 const signUpSet = reactive<SignUpSet>({})
 
 const { app } = useStore()
-const { isLoggedIn } = storeToRefs(app)
 const router = useRouter()
 
 onMounted(() => {
-  if (isLoggedIn.value) {
+  if (app.state.isLoggedIn) {
     router.push('/profile')
   }
 })
@@ -56,7 +54,7 @@ const next = async (result: SelfWithToken) => {
   const { token, ...self } = result
   try {
     await setLocalStorage('token', token)
-    app.self = self
+    app.state.self = self
     toast.success('Authenticated')
     router.push('/profile')
   } catch (e) {

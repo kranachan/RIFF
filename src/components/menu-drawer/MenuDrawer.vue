@@ -23,14 +23,6 @@ const emit = defineEmits<{
 
 const { app } = useStore()
 
-const colorScheme = computed(() => app.themeOptions.scheme)
-const deviceScheme = computed(() => app.themeOptions.deviceScheme)
-const isAutoScheme = computed(() => colorScheme.value === ColorScheme.Auto)
-const isLightScheme = computed(() => colorScheme.value === ColorScheme.Light)
-const isLightDeviceScheme = computed(
-  () => isAutoScheme.value && deviceScheme.value === ColorScheme.Light,
-)
-
 const setColorScheme = async (
   schemeToStore: ColorScheme,
   schemeToApply: ColorScheme.Light | ColorScheme.Dark,
@@ -41,7 +33,7 @@ const setColorScheme = async (
 }
 
 const toggleAutoScheme = async () => {
-  if (isAutoScheme.value) {
+  if (app.getters.isAutoScheme) {
     await setColorScheme(ColorScheme.Light, ColorScheme.Light)
     return
   }
@@ -50,10 +42,10 @@ const toggleAutoScheme = async () => {
 }
 
 const toggleColorScheme = async () => {
-  if (isAutoScheme.value) {
+  if (app.getters.isAutoScheme) {
     return
   }
-  const schemeToApply = isLightScheme.value
+  const schemeToApply = app.getters.isLightScheme
     ? ColorScheme.Dark
     : ColorScheme.Light
 
@@ -71,11 +63,11 @@ const toggleColorScheme = async () => {
     <section class="feats">
       <button><Icon name="Crown" />Rank</button>
       <Divider />
-      <button @click="toggleColorScheme" :disabled="isAutoScheme">
-        <Icon :name="isLightScheme || isLightDeviceScheme ? 'Sun' : 'Moon'" />
-        {{ isLightScheme || isLightDeviceScheme ? 'Light Mode' : 'Dark Mode' }}
+      <button @click="toggleColorScheme" :disabled="app.getters.isAutoScheme">
+        <Icon :name="app.getters.isLightScheme ? 'Sun' : 'Moon'" />
+        {{ app.getters.isLightScheme ? 'Light Mode' : 'Dark Mode' }}
         <span
-          :class="['auto', isAutoScheme && 'is-auto-scheme']"
+          :class="['auto', app.getters.isAutoScheme && 'is-auto-scheme']"
           @click.stop="toggleAutoScheme"
         >
           auto
