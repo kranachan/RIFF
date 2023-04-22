@@ -1,6 +1,6 @@
 .header {
   @apply flex w-full h-[4.25rem] px-4;
-  @apply fixed top-0 left-0 z-50;
+  @apply absolute top-0 left-0 z-10;
   @apply items-center box-border;
   @apply bg-background;
 
@@ -62,11 +62,10 @@
 .user {
   &-cover {
     @apply relative w-full h-28;
-    @apply overflow-hidden;
+    @apply bg-primary overflow-hidden;
 
     img {
       @apply w-full h-full;
-      @apply bg-primary;
       @apply object-cover;
     }
   }
@@ -80,8 +79,7 @@
       @apply relative flex pt-3;
 
       .avatar {
-        @apply absolute w-[4.375rem] h-[4.375rem];
-        @apply left-0;
+        @apply absolute left-0;
         @apply rounded-full bg-background;
         @apply border-2 border-foreground border-solid;
 

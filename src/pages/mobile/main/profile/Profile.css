@@ -1,120 +1,116 @@
-.settings {
-  @apply relative;
+.fixed-top {
+  @apply fixed top-0 left-0 w-full z-30;
+  @apply bg-background;
 
-  .fixed-top {
-    @apply fixed top-0 left-0 w-full z-30;
-    @apply bg-background;
+  .profile {
+    @apply relative;
+    @apply bg-primary;
 
-    .profile {
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    &-inner {
+      @apply flex px-4 py-[2rem];
+      @apply items-center;
+      @apply relative z-10;
+
+      .nickname {
+        @apply flex-1 mx-3;
+        @apply text-base text-white font-semibold;
+        @apply overflow-hidden text-ellipsis whitespace-nowrap;
+
+        text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);
+      }
+
+      .edit {
+        @apply border-white text-white;
+      }
+    }
+
+    &-mask {
+      @apply w-full h-full;
+      @apply absolute top-0 left-0;
+
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .stats {
+    @apply flex py-4 px-[2.125rem];
+    @apply items-center;
+
+    .stat {
+      @apply flex flex-col;
+      @apply text-foreground;
+      @apply select-none cursor-pointer;
+
+      .label {
+        @apply text-xs font-semibold;
+      }
+
+      .count {
+        @apply text-base font-semibold leading-[1.375rem];
+      }
+    }
+
+    .divider {
+      @apply flex flex-1 h-[1.875rem];
       @apply relative;
-      @apply bg-primary;
+      @apply items-center justify-center;
 
-      box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+      &::before {
+        @apply h-full w-px;
+        @apply absolute left-1/2 top-0;
+        @apply bg-hint;
 
-      &-inner {
-        @apply flex px-4 py-[2rem];
-        @apply items-center;
-        @apply relative z-10;
-
-        .nickname {
-          @apply flex-1 mx-3;
-          @apply text-base text-white font-semibold;
-          @apply overflow-hidden text-ellipsis whitespace-nowrap;
-
-          text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .edit {
-          @apply border-white text-white;
-        }
-      }
-
-      &-mask {
-        @apply w-full h-full;
-        @apply absolute top-0 left-0;
-
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-    }
-
-    .stats {
-      @apply flex py-4 px-[2.125rem];
-      @apply items-center;
-
-      .stat {
-        @apply flex flex-col;
-        @apply text-foreground;
-        @apply select-none cursor-pointer;
-
-        .label {
-          @apply text-xs font-semibold;
-        }
-
-        .count {
-          @apply text-base font-semibold leading-[1.375rem];
-        }
-      }
-
-      .divider {
-        @apply flex flex-1 h-[1.875rem];
-        @apply relative;
-        @apply items-center justify-center;
-
-        &::before {
-          @apply h-full w-px;
-          @apply absolute left-1/2 top-0;
-          @apply bg-hint;
-
-          content: '';
-          transform: translateX(-50%);
-        }
+        content: '';
+        transform: translateX(-50%);
       }
     }
   }
+}
 
-  .main {
-    @apply pt-[11.375rem] pb-20;
-  }
+.main {
+  @apply pt-[11.375rem] pb-20;
+}
 
-  .box {
-    @apply py-4;
-    @apply border-b border-hint border-solid;
+.box {
+  @apply py-4;
+  @apply border-b border-hint border-solid;
 
-    .header {
-      @apply flex pb-4 px-4;
+  .header {
+    @apply flex pb-4 px-4;
+    @apply items-center;
+
+    .title {
+      @apply flex flex-1;
       @apply items-center;
+      @apply text-foreground;
 
-      .title {
-        @apply flex flex-1;
-        @apply items-center;
-        @apply text-foreground;
-
-        .icon {
-          @apply flex w-5 h-5;
-          @apply items-center justify-center;
-        }
-
-        .text {
-          @apply ml-2;
-          @apply text-base leading-[1.375rem] font-semibold;
-        }
-      }
-
-      .link {
+      .icon {
         @apply flex w-5 h-5;
         @apply items-center justify-center;
-        @apply text-placeholder;
+      }
+
+      .text {
+        @apply ml-2;
+        @apply text-base leading-[1.375rem] font-semibold;
       }
     }
 
-    .body {
-      @apply relative;
+    .link {
+      @apply flex w-5 h-5;
+      @apply items-center justify-center;
+      @apply text-placeholder;
+    }
+  }
 
-      .card-wrapper {
-        &:not(:last-child) {
-          @apply mr-2;
-        }
+  .body {
+    @apply relative;
+
+    .card-wrapper {
+      &:not(:last-child) {
+        @apply mr-2;
       }
     }
   }
