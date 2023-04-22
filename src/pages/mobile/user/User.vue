@@ -4,6 +4,7 @@ import { useElementVisibility } from '@vueuse/core'
 import Tabbar from '@/components/tabbar/Tabbar.vue'
 import Button from '@/components/button/Button.vue'
 import Icon from '@/components/icon/Icon.vue'
+import PageLayout from '@/components/page-layout/PageLayout.vue'
 
 const anchorRef = ref<HTMLDivElement>()
 
@@ -34,7 +35,7 @@ const list = [
 </script>
 
 <template>
-  <div class="user">
+  <PageLayout class="user">
     <div class="header" :class="anchorVisible && 'transparent'">
       <button class="button"><Icon name="ChevronLeft" /></button>
       <div class="info">
@@ -79,7 +80,7 @@ const list = [
       <div class="anchor" ref="anchorRef" />
     </div>
     <div class="list-area"></div>
-  </div>
+  </PageLayout>
 </template>
 
 <style scoped>

@@ -1,32 +1,30 @@
-.relationship {
-  .header {
-    @apply w-full;
-    @apply fixed top-0 left-0;
+.header {
+  @apply w-full;
+  @apply fixed top-0 left-0;
 
-    .navigation {
-      @apply flex w-full p-4;
-      @apply items-center;
+  .navigation {
+    @apply flex w-full p-4;
+    @apply items-center;
 
-      .back {
-        @apply flex w-6 h-6;
-        @apply items-center justify-center;
-        @apply text-foreground;
-        @apply select-none cursor-pointer;
-      }
-
-      .title {
-        @apply ml-3;
-        @apply text-foreground text-base font-semibold;
-        @apply select-none;
-      }
+    .back {
+      @apply flex w-6 h-6;
+      @apply items-center justify-center;
+      @apply text-foreground;
+      @apply select-none cursor-pointer;
     }
 
-    .tabbar-wrapper {
-      @apply pt-4;
+    .title {
+      @apply ml-3;
+      @apply text-foreground text-base font-semibold;
+      @apply select-none;
     }
   }
 
-  .main {
-    @apply pt-[6.5rem];
+  .tabbar-wrapper {
+    @apply pt-4;
   }
+}
+
+.main {
+  @apply pt-[6.5rem];
 }

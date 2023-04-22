@@ -4,6 +4,7 @@ import Icon from '@/components/icon/Icon.vue'
 import Tabbar from '@/components/tabbar/Tabbar.vue'
 import Divider from '@/components/divider/Divider.vue'
 import UserCard from '@/components/user-card/UserCard.vue'
+import PageLayout from '@/components/page-layout/PageLayout.vue'
 
 const list = [
   {
@@ -28,31 +29,33 @@ const onTabbarChange = (key: number) => {
 </script>
 
 <template>
-  <div class="relationship">
-    <div class="header">
-      <div class="navigation">
-        <div class="back"><Icon name="ChevronLeft" /></div>
-        <span class="title">Relationship</span>
+  <PageLayout>
+    <div class="relationship">
+      <div class="header">
+        <div class="navigation">
+          <div class="back"><Icon name="ChevronLeft" /></div>
+          <span class="title">Relationship</span>
+        </div>
+        <Divider />
+        <div class="tabbar-wrapper">
+          <Tabbar
+            :list="list"
+            :active-key="state.activeKey"
+            @change="onTabbarChange"
+          />
+        </div>
       </div>
-      <Divider />
-      <div class="tabbar-wrapper">
-        <Tabbar
-          :list="list"
-          :active-key="state.activeKey"
-          @change="onTabbarChange"
-        />
-      </div>
-    </div>
 
-    <div class="main">
-      <div class="list-wrapper" v-show="state.activeKey === 1">
-        <UserCard />
-      </div>
-      <div class="list-wrapper" v-show="state.activeKey === 2">
-        <UserCard />
+      <div class="main">
+        <div class="list-wrapper" v-show="state.activeKey === 1">
+          <UserCard />
+        </div>
+        <div class="list-wrapper" v-show="state.activeKey === 2">
+          <UserCard />
+        </div>
       </div>
     </div>
-  </div>
+  </PageLayout>
 </template>
 
 <style scoped>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import AlbumItem from '@/components/album-item/AlbumItem.vue'
+import PageLayout from '@/components/page-layout/PageLayout.vue'
 import { useStore } from '@/store'
-import { computed, watchEffect } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -19,7 +20,7 @@ const album = computed(() => albumStore.getAlbumById(albumId))
 //   )
 // }
 
-watchEffect(async () => {
+onMounted(async () => {
   if (!album.value) {
     await albumStore.fetchAlbumById(albumId)
   }
@@ -27,7 +28,9 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <AlbumItem v-if="album" :album="album" with-back />
+  <PageLayout>
+    <AlbumItem v-if="album" :album="album" with-back />
+  </PageLayout>
 </template>
 
 <style scoped>
