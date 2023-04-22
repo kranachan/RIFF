@@ -17,6 +17,6 @@ export const defaultTheme: Theme = {
     surface: '#222222',
     placeholder: '#666666',
     emphasize: '#ee4057',
-    hint: '#DDDDDD',
+    hint: '#333333',
   },
 }

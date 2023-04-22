@@ -66,11 +66,17 @@
     @apply relative ml-auto;
 
     &-text {
-      @apply relative;
+      @apply relative text-black;
+
+      &.with-stroke {
+        text-shadow: -0.5px -0.5px 0 theme(colors.white),
+          0.5px -0.5px 0 theme(colors.white), -1.5px 1.5px 0 theme(colors.white),
+          0.5px 0.5px 0 theme(colors.white);
+      }
     }
 
     &-rough {
-      @apply absolute right-0;
+      @apply absolute -right-0.5;
     }
   }
 }

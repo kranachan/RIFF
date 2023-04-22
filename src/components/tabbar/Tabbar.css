@@ -51,11 +51,19 @@
   &-mask-left {
     @apply left-0;
 
-    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 93.13%);
+    background: linear-gradient(
+      90deg,
+      theme(colors.background) 0%,
+      rgba(255, 255, 255, 0) 93.13%
+    );
   }
   &-mask-right {
     @apply right-0;
 
-    background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 93.13%);
+    background: linear-gradient(
+      270deg,
+      theme(colors.background) 0%,
+      rgba(255, 255, 255, 0) 93.13%
+    );
   }
 }

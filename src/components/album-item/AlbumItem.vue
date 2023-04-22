@@ -16,7 +16,7 @@ const props = defineProps<{
 }>()
 
 const router = useRouter()
-const { userStore } = useStore()
+const { app, userStore } = useStore()
 const author = userStore.getUserById(props.album.authorId)
 
 const onBackClicked = () => {
@@ -62,7 +62,13 @@ const onBackClicked = () => {
       <button class="forward-action">
         <Rough class="forward-action-rough" />
         <Icon name="Forward" />
-        <span class="forward-action-text">Share</span>
+        <span
+          :class="[
+            'forward-action-text',
+            app.getters.isDarkScheme && 'with-stroke',
+          ]"
+          >Share</span
+        >
       </button>
     </div>
     <Divider />
