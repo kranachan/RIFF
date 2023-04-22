@@ -48,7 +48,7 @@ const loginByToken = async () => {
     return
   }
   try {
-  const self = await AuthApi.loginByToken()
+    const self = await AuthApi.loginByToken()
     app.state.self = self
   } catch (error) {
     console.warn(error)
@@ -64,7 +64,11 @@ onMounted(async () => {
 
 <template>
   <StarportCarrier>
-    <RouterView />
+    <RouterView v-slot="{ Component, route }">
+      <transition :name="route.meta.transition as string">
+        <component :is="Component" />
+      </transition>
+    </RouterView>
   </StarportCarrier>
   <Toaster position="top-center" />
 </template>

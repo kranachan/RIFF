@@ -11,9 +11,20 @@ import 'tippy.js/dist/tippy.css'
 import 'tippy.js/animations/scale.css'
 import '@/App.css'
 import App from '@/App.vue'
+import { RouteTransition } from './constants'
 
 const app = createApp(App)
 const pinia = createPinia()
+
+router.afterEach((to, from) => {
+  const toDepth = to.path.split('/').length
+  const fromDepth = from.path.split('/').length
+  if (to.meta.transition) {
+    return
+  }
+  to.meta.transition =
+    toDepth < fromDepth ? RouteTransition.SlideLeft : RouteTransition.SlideRight
+})
 
 app.use(pinia)
 app.use(router)

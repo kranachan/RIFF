@@ -7,12 +7,14 @@ import Auth from '@/pages/mobile/main/auth/Auth.vue'
 import User from '@/pages/mobile/user/User.vue'
 import Album from '@/pages/mobile/album/Album.vue'
 import Relationship from '@/pages/mobile/relationship/Relationship.vue'
+import { RouteTransition } from '@/constants'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     component: Main,
     redirect: 'explore',
+    meta: { transition: RouteTransition.None },
     children: [
       {
         name: 'explore',
@@ -28,6 +30,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'profile',
         path: '/profile',
         component: Profile,
+        meta: { transition: RouteTransition.SlideLeft },
       },
       {
         name: 'auth',
@@ -43,6 +46,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/album/:albumId',
     component: Album,
+    meta: { transition: RouteTransition.None },
   },
   {
     path: '/user/:userId/relationship',
