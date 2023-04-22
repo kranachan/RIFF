@@ -49,7 +49,7 @@ const loginByToken = async () => {
   }
   try {
   const self = await AuthApi.loginByToken()
-  app.self = self
+    app.state.self = self
   } catch (error) {
     console.warn(error)
   }

@@ -6,7 +6,6 @@ import Icon from '@/components/icon/Icon.vue'
 import FloatingLand from '@/components/floating-land/FloatingLand.vue'
 import Avatar from '@/components/avatar/Avatar.vue'
 import { useStore } from '@/store'
-import { storeToRefs } from 'pinia'
 import { computed } from '@vue/reactivity'
 
 interface RouteItem {
@@ -24,7 +23,6 @@ enum BottomNavigationRoute {
 }
 
 const { app } = useStore()
-const { self, isLoggedIn } = storeToRefs(app)
 
 const routes = computed<RouteItem[]>(() => [
   {
@@ -40,12 +38,14 @@ const routes = computed<RouteItem[]>(() => [
     route: '/following',
   },
   {
-    key: isLoggedIn.value
+    key: app.state.isLoggedIn
       ? BottomNavigationRoute.Profile
       : BottomNavigationRoute.Auth,
     icon: 'AtSign',
-    title: isLoggedIn.value ? self.value?.username ?? '[Unknown]' : 'Auth',
-    route: isLoggedIn.value ? '/profile' : '/auth',
+    title: app.state.isLoggedIn
+      ? app.state.self?.username ?? '[Unknown]'
+      : 'Auth',
+    route: app.state.isLoggedIn ? '/profile' : '/auth',
   },
 ])
 
@@ -83,8 +83,11 @@ const handleClickItem = (item: RouteItem) => {
           <div class="icon">
             <Avatar
               class="z-10"
-              v-if="route.key === BottomNavigationRoute.Profile && isLoggedIn"
-              :source="self?.avatar"
+              v-if="
+                route.key === BottomNavigationRoute.Profile &&
+                app.state.isLoggedIn
+              "
+              :source="app.state.self?.avatar"
               :size="24"
             />
             <Icon v-else :name="route.icon" />
