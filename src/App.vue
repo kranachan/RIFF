@@ -32,7 +32,7 @@ const watchDeviceColorScheme = () => {
     const isDarkScheme = e.matches
     const schemeToApply = isDarkScheme ? ColorScheme.Dark : ColorScheme.Light
     app.actions.patchDeviceColorScheme(schemeToApply)
-    if (app.themeOptions.scheme === ColorScheme.Auto) {
+    if (app.state.themeOptions.scheme === ColorScheme.Auto) {
       applyTheme(defaultTheme, schemeToApply)
     }
   }
