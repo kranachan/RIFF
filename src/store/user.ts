@@ -8,19 +8,21 @@ export const useUserStore = defineStore('user', {
   }),
   getters: {
     getUserById: (state) => {
-      return (albumId: string) =>
-        state.userList.find((item) => item.id === albumId)
+      return (userId: string): User | undefined =>
+        state.userList.find((user) => user.id === userId)
     },
   },
   actions: {
-    async fetchUserById(id: string) {
-      const user = this.getUserById(id)
-      if (!user) {
-        const resp = await UserApi.getUserById(id)
-        this.$patch((state) => {
-          state.userList.push(resp)
-        })
+    async fetchUserById(id: string): Promise<User> {
+      const foundedUser = this.getUserById(id)
+      if (foundedUser) {
+        return foundedUser
       }
+      const resp = await UserApi.getUserById(id)
+      this.$patch((state) => {
+        state.userList.push(resp)
+      })
+      return resp
     },
   },
 })
