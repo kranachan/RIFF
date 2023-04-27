@@ -26,14 +26,15 @@ router.afterEach((to, from) => {
     toDepth < fromDepth ? RouteTransition.SlideLeft : RouteTransition.SlideRight
 })
 
-app.use(pinia)
-app.use(router)
-app.use(VueLazyload)
-app.use<{ defaultProps: TippyOptions }>(VueTippy, {
-  defaultProps: { animation: 'scale' },
-})
-app.use(MotionPlugin)
-app.use(GesturePlugin)
-app.use(autoAnimatePlugin)
-app.use(VWave, {})
-app.mount('#app')
+app
+  .use(pinia)
+  .use(router)
+  .use(VueLazyload)
+  .use<{ defaultProps: TippyOptions }>(VueTippy, {
+    defaultProps: { animation: 'scale' },
+  })
+  .use(MotionPlugin)
+  .use(GesturePlugin)
+  .use(autoAnimatePlugin)
+  .use(VWave, {})
+  .mount('#app')
