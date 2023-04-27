@@ -69,9 +69,10 @@
       @apply relative text-black;
 
       &.with-stroke {
-        text-shadow: -0.5px -0.5px 0 theme(colors.white),
-          0.5px -0.5px 0 theme(colors.white), -1.5px 1.5px 0 theme(colors.white),
-          0.5px 0.5px 0 theme(colors.white);
+        text-shadow: -0.5px -0.5px 0 theme(colors.foreground),
+          0.5px -0.5px 0 theme(colors.foreground),
+          -1.5px 1.5px 0 theme(colors.foreground),
+          0.5px 0.5px 0 theme(colors.foreground);
       }
     }
 
