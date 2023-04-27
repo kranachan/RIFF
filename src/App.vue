@@ -70,5 +70,9 @@ onMounted(async () => {
       </transition>
     </RouterView>
   </StarportCarrier>
-  <Toaster position="top-center" />
+  <Toaster
+    position="top-center"
+    :toastOptions="{ className: 'toaster' }"
+    :duration="1500"
+  />
 </template>

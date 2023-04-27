@@ -45,3 +45,11 @@
 .slide-left-enter-to {
   @apply left-0;
 }
+
+.toaster {
+  /* HACK: for dark mode */
+  @apply !bg-background !text-foreground !border-foreground;
+
+  /* HACK: cover the area outside the offset for mobile devices */
+  width: calc(100% - 32px) !important;
+}
