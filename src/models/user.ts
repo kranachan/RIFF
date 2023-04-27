@@ -4,12 +4,15 @@ export interface User {
   name: string
   avatar?: string
   banner?: string
+  bio?: string
+  following?: boolean
+  followedBy?: boolean
+  followingCount: number
+  followerCount: number
   createdAt: Date
-  following: string[]
-  follower: string[]
 }
 
-export interface Self extends User {
+export interface Self extends Omit<User, 'following' | 'followedBy'> {
   email: string
 }
 
