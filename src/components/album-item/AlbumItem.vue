@@ -20,7 +20,11 @@ const { app, userStore } = useStore()
 const author = userStore.getUserById(props.album.authorId)
 
 const onBackClicked = () => {
-  router.back()
+  if ('back' in window.history.state && window.history.state.back) {
+    router.back()
+  } else {
+    router.replace('/explore')
+  }
 }
 </script>
 
