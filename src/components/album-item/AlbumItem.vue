@@ -5,6 +5,7 @@ import ImageProvider from '../image-provider/ImageProvider.vue'
 import { Starport } from 'vue-starport'
 import Icon from '../icon/Icon.vue'
 import { useRouter } from 'vue-router'
+import { useGoBack } from '@/hooks'
 import Divider from '../divider/Divider.vue'
 import Rough from '@/assets/icons/rough.svg?component'
 import { useStore } from '@/store'
@@ -19,11 +20,11 @@ const router = useRouter()
 const { app, userStore } = useStore()
 const author = userStore.getUserById(props.album.authorId)
 
-const onBackClicked = () => {
-  if ('back' in window.history.state && window.history.state.back) {
-    router.back()
-  } else {
-    router.replace('/explore')
+const onBackClicked = useGoBack()
+
+const onAvatarClicked = () => {
+  if (author?.id) {
+    router.push(`/user/${author.id}`)
   }
 }
 </script>
@@ -34,7 +35,7 @@ const onBackClicked = () => {
       <button class="back-action" v-if="withBack">
         <Icon name="ChevronLeft" @click="onBackClicked" />
       </button>
-      <Avatar :size="32" :source="author?.avatar" />
+      <Avatar :size="32" :source="author?.avatar" @click="onAvatarClicked" />
       <section class="info">
         <b class="name">{{ author?.name ?? '[Unknown]' }}</b>
         <span class="date"
