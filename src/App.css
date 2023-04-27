@@ -24,13 +24,19 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+body {
+  @apply bg-background;
+}
+
 .slide-right-enter-active,
 .slide-right-leave-active {
   @apply absolute transition-all duration-300;
 }
+
 .slide-right-enter-from {
   @apply -right-full;
 }
+
 .slide-right-enter-to {
   @apply right-0;
 }
@@ -39,9 +45,11 @@
 .slide-left-leave-active {
   @apply absolute transition-all duration-500;
 }
+
 .slide-left-enter-from {
   @apply -left-full;
 }
+
 .slide-left-enter-to {
   @apply left-0;
 }
