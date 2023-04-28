@@ -1,67 +1,49 @@
 .header {
-  @apply flex w-full h-[4.25rem] px-4;
-  @apply absolute top-0 left-0 z-10;
+  @apply flex w-full h-14 px-4;
+  @apply fixed top-0 left-0 z-10;
   @apply items-center box-border;
   @apply bg-background;
 
-  .button {
-    @apply flex w-6 h-6;
+  &-action {
+    @apply flex w-6 h-6 text-foreground;
     @apply items-center justify-center;
-    @apply filter-none;
   }
 
-  .info {
-    @apply flex flex-1 ml-4;
-    @apply items-center;
-    @apply opacity-100;
+  &-info {
+    @apply flex flex-1 ml-4 items-center;
+    @apply transition-all duration-300;
 
-    transition: all 0.25s ease;
-
-    &-wrapper {
-      @apply flex;
-      @apply items-center;
-    }
-
-    &-avatar {
-      @apply w-8 h-8;
-      @apply rounded-full overflow-hidden;
-    }
-
-    &-right {
+    &-profile {
       @apply flex flex-col ml-2;
     }
 
-    &-nickname {
+    &-name {
       @apply text-base text-foreground font-semibold;
     }
 
-    &-datetime {
+    &-bio {
       @apply text-sm text-foreground font-normal leading-4;
     }
   }
 
-  &.transparent {
-    @apply text-background;
+  &.is-info-in-view {
+    @apply text-background bg-transparent;
 
-    background-color: transparent;
-
-    .info {
-      @apply opacity-0;
-
-      &-wrapper {
-        @apply hidden;
-      }
+    & .header-info {
+      @apply hidden;
     }
 
-    .button {
+    & .header-action {
       filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.7));
     }
   }
 }
 
 .user {
+  @apply relative;
+
   &-cover {
-    @apply relative w-full h-28;
+    @apply w-full h-28;
     @apply bg-primary overflow-hidden;
 
     img {
@@ -79,11 +61,9 @@
       @apply relative flex pt-3;
 
       .avatar {
-        @apply absolute left-0;
+        @apply absolute left-0 -top-5;
         @apply rounded-full bg-background;
         @apply border-2 border-foreground border-solid;
-
-        top: -1.25rem;
       }
 
       .stats {
@@ -113,36 +93,22 @@
       @apply select-none;
     }
 
-    .sign {
-      @apply mt-3;
+    .bio {
       @apply text-xs font-normal text-foreground;
-      @apply select-none;
+      @apply mt-3 select-none;
     }
   }
 
   .tabbar-area {
-    @apply relative w-full h-[3.25rem];
+    @apply w-full py-[0.625rem];
     @apply bg-background;
 
-    .anchor {
-      @apply absolute w-full h-0;
-      @apply left-0;
-
-      top: -4.275rem;
-    }
-
-    .tarbar {
-      @apply w-full py-[0.625rem];
-      @apply absolute top-0 left-0;
-      @apply bg-background;
-
-      &.is-fixed {
-        @apply fixed top-[4.25rem] z-40;
-      }
+    &.is-sticky {
+      @apply sticky top-14 z-10;
     }
   }
 
-  .list-area {
+  .timeline-area {
     @apply relative;
   }
 }
