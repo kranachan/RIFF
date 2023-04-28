@@ -34,11 +34,11 @@ body {
 }
 
 .slide-right-enter-from {
-  @apply -right-full;
+  @apply translate-x-full;
 }
 
 .slide-right-enter-to {
-  @apply right-0;
+  @apply translate-x-0;
 }
 
 .slide-left-enter-active,
@@ -47,11 +47,11 @@ body {
 }
 
 .slide-left-enter-from {
-  @apply -left-full;
+  @apply -translate-x-full;
 }
 
 .slide-left-enter-to {
-  @apply left-0;
+  @apply translate-x-0;
 }
 
 .toaster {
