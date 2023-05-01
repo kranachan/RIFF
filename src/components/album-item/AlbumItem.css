@@ -59,7 +59,7 @@
   @apply flex px-4 gap-2;
 
   & button {
-    @apply flex py-4 gap-2 font-semibold;
+    @apply flex py-4 gap-2 font-semibold select-none;
   }
 
   & .forward-action {
