@@ -1,11 +1,11 @@
 .header {
-  @apply flex w-full h-14 px-4;
+  @apply flex w-full h-14;
   @apply fixed top-0 left-0 z-10;
   @apply items-center box-border;
   @apply bg-background;
 
   &-action {
-    @apply flex w-6 h-6 text-foreground;
+    @apply flex h-14 text-white px-4;
     @apply items-center justify-center;
   }
 
