@@ -19,7 +19,7 @@ const pinia = createPinia()
 router.afterEach((to, from) => {
   const toDepth = to.path.split('/').length
   const fromDepth = from.path.split('/').length
-  if (to.meta.transition) {
+  if (to.meta.transition || !window.history.state?.back) {
     return
   }
   to.meta.transition =

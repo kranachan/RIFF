@@ -30,7 +30,6 @@ const routes: Array<RouteRecordRaw> = [
         name: 'profile',
         path: '/profile',
         component: Profile,
-        meta: { transition: RouteTransition.SlideLeft },
       },
       {
         name: 'auth',
