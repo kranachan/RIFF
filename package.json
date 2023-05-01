@@ -17,6 +17,7 @@
     "dayjs": "^1.11.7",
     "lucide-vue-next": "^0.109.0",
     "pinia": "^2.0.30",
+    "ts-pattern": "^4.2.2",
     "ua-parser-js": "^1.0.34",
     "v-wave": "^1.5.0",
     "vue": "^3.2.45",
