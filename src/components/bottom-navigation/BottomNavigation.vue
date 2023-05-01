@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { capitalize, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { capitalize, ref, watch } from 'vue'
+import { RouteRecordName, useRouter } from 'vue-router'
 import { LucideIconKey } from '@/constants/icon'
 import Icon from '@/components/icon/Icon.vue'
 import FloatingLand from '@/components/floating-land/FloatingLand.vue'
@@ -50,20 +50,31 @@ const routes = computed<RouteItem[]>(() => [
 ])
 
 const router = useRouter()
-const routeName = router.currentRoute.value.name
+const routeName = computed(() => router.currentRoute.value.name)
+
+const validateRoute = (routeName?: RouteRecordName | null): boolean => {
+  if (!routeName) {
+    return false
+  }
+  if (!(capitalize(routeName.toString()) in BottomNavigationRoute)) {
+    return false
+  }
+  return true
+}
 
 const initialKey = (() => {
-  if (!routeName) {
-    return
+  if (validateRoute(routeName.value)) {
+    return routeName.value as BottomNavigationRoute
   }
-  const isValidRoute = capitalize(routeName.toString()) in BottomNavigationRoute
-  if (!isValidRoute) {
-    return
-  }
-  return routeName as BottomNavigationRoute
 })()
 
-const activeKey = ref(initialKey)
+const activeKey = ref<BottomNavigationRoute | undefined>(initialKey)
+
+watch(routeName, (newRoute) => {
+  if (validateRoute(newRoute)) {
+    activeKey.value = routeName.value as BottomNavigationRoute
+  }
+})
 
 const handleClickItem = (item: RouteItem) => {
   activeKey.value = item.key
