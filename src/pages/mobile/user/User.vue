@@ -9,12 +9,13 @@ import { useGoBack } from '@/hooks'
 import { useRoute } from 'vue-router'
 import { useStore } from '@/store'
 import Avatar from '@/components/avatar/Avatar.vue'
+import RelationshipButton from '@/components/relationship-button/RelationshipButton.vue'
 
 const infoAnchorRef = ref<HTMLDivElement>()
 const isInfoAnchorVisible = useElementVisibility(infoAnchorRef)
 
 const route = useRoute()
-const { userStore } = useStore()
+const { app, userStore } = useStore()
 const userId = route.params.userId as string
 const user = computed(() => userStore.getUserById(userId))
 
@@ -85,7 +86,11 @@ const list = [
             <span class="stat-count">{{ user?.followerCount ?? 0 }}</span>
           </div>
         </div>
-        <Button>Follow</Button>
+        <RelationshipButton
+          v-if="user"
+          :user="user"
+          :isSelf="app.getters.isSelf(user?.id)"
+        />
       </div>
       <div ref="infoAnchorRef" />
       <div class="nickname">{{ user?.name }}</div>

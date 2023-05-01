@@ -6,6 +6,7 @@ import { computed, ComputedRef, reactive, ref } from 'vue'
 const useAppStore = defineStore('app', () => {
   const self = ref<Self>()
   const isLoggedIn = computed(() => !!self.value)
+
   const themeOptions = reactive<ThemeOptions>({
     scheme: ColorScheme.Auto,
     deviceScheme: ColorScheme.Light,
@@ -20,6 +21,14 @@ const useAppStore = defineStore('app', () => {
         themeOptions.scheme === scheme
       )
     })
+  }
+
+  const isSelf = (userId?: string): boolean => {
+    if (!userId || !isLoggedIn.value) {
+      return false
+    }
+
+    return userId === self.value?.id
   }
 
   const isAutoScheme = computed(() => themeOptions.scheme === ColorScheme.Auto)
@@ -43,6 +52,7 @@ const useAppStore = defineStore('app', () => {
   }
 
   const getters = {
+    isSelf,
     isAutoScheme,
     isLightScheme,
     isDarkScheme,

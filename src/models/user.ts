@@ -2,9 +2,9 @@ export interface User {
   id: string
   username: string
   name: string
-  avatar?: string
-  banner?: string
-  bio?: string
+  avatar: string | null
+  banner: string | null
+  bio: string | null
   following?: boolean
   followedBy?: boolean
   followingCount: number
