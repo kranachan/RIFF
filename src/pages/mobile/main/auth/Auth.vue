@@ -5,7 +5,7 @@ import Picture from '@/components/picture/Picture.vue'
 import Logo from '@/assets/branding/logo.svg?component'
 import AuthBannerPng from '@/assets/images/auth-banner.png?url'
 import AuthBannerWebp from '@/assets/images/auth-banner.webp?url'
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, watchEffect } from 'vue'
 import { AuthApi } from '@/api/auth'
 import { setLocalStorage } from '@/utils/localstorage'
 import { useStore } from '@/store'
@@ -39,7 +39,7 @@ const signUpSet = reactive<SignUpSet>({})
 const { app } = useStore()
 const router = useRouter()
 
-onMounted(() => {
+watchEffect(() => {
   if (app.state.isLoggedIn) {
     router.push('/profile')
   }
