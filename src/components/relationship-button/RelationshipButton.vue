@@ -7,7 +7,9 @@ const props = defineProps<{
   isSelf?: boolean
 }>()
 
-const btnVariant = props.user.following ? 'outline' : undefined
+const btnVariant: 'outlined' | undefined = props.user.following
+  ? 'outlined'
+  : undefined
 const displayedText = props.user.following ? 'Followed' : 'Follow'
 
 const onClicked = () => {}

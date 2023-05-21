@@ -3,7 +3,7 @@ import DeafultAvatar from '@/assets/images/default-avatar.png?url'
 
 const { source, size } = withDefaults(
   defineProps<{
-    source?: string
+    source?: string | null
     size?: number
   }>(),
   {

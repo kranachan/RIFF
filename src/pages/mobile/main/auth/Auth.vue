@@ -126,7 +126,7 @@ const tippy = createTippy({
   <div class="header">
     <Logo />
     <Button
-      variant="outline"
+      variant="outlined"
       class="toggle-scheme-btn"
       @click="toggleAuthScheme"
     >

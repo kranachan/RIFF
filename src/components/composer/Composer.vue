@@ -47,7 +47,7 @@ const onTextareaBlur = () => {
         <div
           class="textarea-wrapper"
           contenteditable
-          @input="(e) => onTextareaWrapperInput(e)"
+          @input="(e: Event) => onTextareaWrapperInput(e)"
           @focus="onTextareaFocus"
           @blur="onTextareaBlur"
         >
