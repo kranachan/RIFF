@@ -13,7 +13,7 @@ import Avatar from '@/components/avatar/Avatar.vue'
       <div class="profile-inner">
         <Avatar source="" :size="48" />
         <div class="nickname">[name]</div>
-        <Button variant="outline" class="edit">Edit Profile</Button>
+        <Button variant="outlined" class="edit">Edit Profile</Button>
       </div>
       <div class="profile-mask" />
     </div>

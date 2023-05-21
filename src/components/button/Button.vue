@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ButtonHTMLAttributes, toRefs, withDefaults } from 'vue'
 
-type Variant = 'primary' | 'outline'
-
 interface ButtonProps extends ButtonHTMLAttributes {
-  variant?: Variant
+  variant?: 'primary' | 'outlined'
   disabled?: boolean
 }
 

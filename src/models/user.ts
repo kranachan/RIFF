@@ -9,6 +9,7 @@ export interface User {
   followedBy?: boolean
   followingCount: number
   followerCount: number
+  albumCount: number
   createdAt: Date
 }
 
