@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useMotions } from '@vueuse/motion'
-import { Transition } from 'vue'
+import { Transition, watchEffect } from 'vue'
 
 const props = defineProps<{
   open: boolean
@@ -15,12 +15,16 @@ const triggerClose = () => {
 }
 
 const motions = useMotions()
+
+watchEffect(() => {
+  document.body.style.overflow = props.open ? 'hidden' : 'auto'
+})
 </script>
 
 <template>
   <transition
     :css="false"
-    @leave="(el: HTMLElement, done: () => void) => motions.drawerOverlay.leave(done)"
+    @leave="(el: Element, done: () => void) => motions.drawerOverlay.leave(done)"
   >
     <div
       v-if="open"
@@ -34,7 +38,7 @@ const motions = useMotions()
   </transition>
   <transition
     :css="false"
-    @leave="(el: HTMLElement, done: () => void) => motions.drawer.leave(done)"
+    @leave="(el: Element, done: () => void) => motions.drawer.leave(done)"
   >
     <div
       class="drawer"
